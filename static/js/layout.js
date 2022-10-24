@@ -4,13 +4,13 @@ const body = document.querySelector("body");
 // ***********Form fields
 const loginFields = [
     {tag: "input", attributes: {type: "text", name: "username", placeholder: "Username", required: true}},
-    {tag: "input", attributes: {type: "text", name: "password", placeholder: "Password", required: true}},
+    {tag: "input", attributes: {type: "password", name: "password", placeholder: "Password", required: true}},
     {tag: "input", attributes: {type: "submit", value: "Login"}}
 ]
 
 const registerFields = [
     {tag: "input", attributes: {type: "text", name: "username", placeholder: "Username", required: true}},
-    {tag: "input", attributes: {type: "text", name: "password", placeholder: "Password", required: true}},
+    {tag: "input", attributes: {type: "password", name: "password", placeholder: "Password", required: true}},
     {tag: "input", attributes: {type: "submit", value: "Register"}}
 ]
 
@@ -35,6 +35,9 @@ function updateContent(){
     } else if (hash == "dashboard") {
         clearPage();
         dashboard();
+    } else if (hash == `habit${index}`) {
+        clearPage();
+        habitModal(index);
     }
 }
 
@@ -80,19 +83,26 @@ function registerPage() {
     registerDiv.appendChild(registerForm)
 }
 
-function dashboard() {
+async function dashboard() {
     const dashboardDiv = document.createElement('div');
     body.appendChild(dashboardDiv);
     const header = document.createElement('h1');
     header.textContent = "Your dashboard:";
     dashboardDiv.appendChild(header);
-    const habits = userHabits(localStorage.getItem(username));
-    habits.forEach(h => {
+    const habits = await userHabits(localStorage.getItem("username"));
+    console.log("habits", habits);
+    habits.forEach((h, index) => {
         const habit = document.createElement("button");
-        habit.textContent = `${h.name}`;
+        habit.textContent = `${h.habit}`;
+        habit.addEventListener("click", () => {window.location.hash = `habit${index}`})
         dashboardDiv.appendChild(habit);
     })
 }
+
+function habitModal(index) {
+    console.log(index);
+}
+
 
 function clearPage() {
     body.replaceChildren();
@@ -109,7 +119,7 @@ async function requestLogin(e){
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
-        const r = await fetch(`http://localhost:3000/login`, options)
+        const r = await fetch(`http://localhost:3000/auth/login`, options)
         const data = await r.json()
         if (data.err){ throw Error(data.err); }
         login(data);
@@ -126,7 +136,12 @@ function login(data){
     localStorage.setItem('token', data.token);
     localStorage.setItem('username', payload.username);
     // location.hash = '#feed';
-    wondow.location.hash = "dashboard";
+    window.location.hash = "dashboard";
+}
+
+function logout(){
+    localStorage.clear();
+    location.hash = 'login';
 }
 
 // async function requestLogin(e) {
@@ -143,7 +158,7 @@ async function requestRegistration(e) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
-        const r = await fetch(`http://localhost:3000/register`, options)
+        const r = await fetch(`http://localhost:3000/auth/register`, options)
         const data = await r.json()
         if (data.err){ throw Error(data.err) }
         requestLogin(e);
@@ -159,14 +174,16 @@ async function requestRegistration(e) {
 // }
 
 async function userHabits(username) {
-    // console.log("get all habits");
+    console.log("get all habits", localStorage.getItem("token"));
     try {
         const options = {
             headers: new Headers({"Authorization": localStorage.getItem('token')})
         }
-        const response = await fetch(`http://localhost:3000/${username}`, options);
+        const response = await fetch(`http://localhost:3000/users/${username}`, options);
         const data = await response.json();
-        return data;
+        console.log("data", data)
+        console.log("data[0].habits", data[0].habits)
+        return data[0].habits;
     } catch (err) {
         console.warn(err);
     }
