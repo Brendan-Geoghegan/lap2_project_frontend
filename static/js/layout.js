@@ -63,7 +63,7 @@ function loginPage() {
         Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
         loginForm.appendChild(field);
     })
-    loginForm.onsubmit = login;
+    loginForm.onsubmit = requestLogin;
     loginDiv.appendChild(loginForm)
 }
 
@@ -76,7 +76,7 @@ function registerPage() {
         Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
         registerForm.appendChild(field);
     })
-    registerForm.onsubmit = register;
+    registerForm.onsubmit = requestRegistration;
     registerDiv.appendChild(registerForm)
 }
 
@@ -86,6 +86,12 @@ function dashboard() {
     const header = document.createElement('h1');
     header.textContent = "Your dashboard:";
     dashboardDiv.appendChild(header);
+    const habits = userHabits(localStorage.getItem(username));
+    habits.forEach(h => {
+        const habit = document.createElement("button");
+        habit.textContent = `${h.name}`;
+        dashboardDiv.appendChild(habit);
+    })
 }
 
 function clearPage() {
@@ -95,20 +101,75 @@ function clearPage() {
 
 // ******** Requests
 
-async function login(e) {
+async function requestLogin(e){
     e.preventDefault();
-    console.log("logging in");
-    window.location.hash = "dashboard"
+    try {
+        const options = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
+        }
+        const r = await fetch(`http://localhost:3000/login`, options)
+        const data = await r.json()
+        if (data.err){ throw Error(data.err); }
+        login(data);
+    } catch (err) {
+        console.warn(`Error: ${err}`);
+    }
 }
 
-async function register(e) {
-    e.preventDefault();
-    console.log("registering");
-    window.location.hash = "dashboard"
+function login(data){
+    // localStorage.setItem('username', data.user);
+    const payload = jwt_decode(data.token);
+    // console.log(payload, "payload");
+    // console.log(data, "data");
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('username', payload.username);
+    // location.hash = '#feed';
+    wondow.location.hash = "dashboard";
 }
 
-async function allHabits() {
-    console.log("get all habits");
+// async function requestLogin(e) {
+//     e.preventDefault();
+//     console.log("logging in");
+//     window.location.hash = "dashboard"
+// }
+
+async function requestRegistration(e) {
+    e.preventDefault();
+    try {
+        const options = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
+        }
+        const r = await fetch(`http://localhost:3000/register`, options)
+        const data = await r.json()
+        if (data.err){ throw Error(data.err) }
+        requestLogin(e);
+    } catch (err) {
+        console.warn(err);
+    }
+}
+
+// async function requestRegistrastion(e) {
+//     e.preventDefault();
+//     console.log("registering");
+//     window.location.hash = "dashboard"
+// }
+
+async function userHabits(username) {
+    // console.log("get all habits");
+    try {
+        const options = {
+            headers: new Headers({"Authorization": localStorage.getItem('token')})
+        }
+        const response = await fetch(`http://localhost:3000/${username}`, options);
+        const data = await response.json();
+        return data;
+    } catch (err) {
+        console.warn(err);
+    }
 }
 
 
