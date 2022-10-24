@@ -3,14 +3,14 @@ const body = document.querySelector("body");
 
 // ***********Form fields
 const loginFields = [
-    {tag: "input", attributes: {type: "text", name: "username", placeholder: "Username"}},
-    {tag: "input", attributes: {type: "text", name: "password", placeholder: "Password"}},
+    {tag: "input", attributes: {type: "text", name: "username", placeholder: "Username", required: true}},
+    {tag: "input", attributes: {type: "text", name: "password", placeholder: "Password", required: true}},
     {tag: "input", attributes: {type: "submit", value: "Login"}}
 ]
 
 const registerFields = [
-    {tag: "input", attributes: {type: "text", name: "username", placeholder: "Username"}},
-    {tag: "input", attributes: {type: "text", name: "password", placeholder: "Password"}},
+    {tag: "input", attributes: {type: "text", name: "username", placeholder: "Username", required: true}},
+    {tag: "input", attributes: {type: "text", name: "password", placeholder: "Password", required: true}},
     {tag: "input", attributes: {type: "submit", value: "Register"}}
 ]
 
@@ -107,8 +107,7 @@ async function register(e) {
     window.location.hash = "dashboard"
 }
 
-async function allHabits(e) {
-    e.preventDefault();
+async function allHabits() {
     console.log("get all habits");
 }
 
