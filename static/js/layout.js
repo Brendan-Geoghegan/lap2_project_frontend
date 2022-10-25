@@ -168,6 +168,13 @@ async function habitModal(index) {
         e.preventDefault();
         updateFrequency(localStorage.getItem("username"), index, e)
     });
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = `Delete`;
+    deleteButton.addEventListener("click", (e) => {
+        e.preventDefault()
+        deleteHabit(localStorage.getItem("username"), index)
+    })
+    habitDiv.appendChild(deleteButton);
     backbutton("dashboard");
     logoutButton();
 }
@@ -354,6 +361,21 @@ async function updateFrequency(username, index, e) {
         }
         const response = await fetch(`http://localhost:3000/users/${username}/habits/${index}/frequency`, options);
         updateContent();
+    } catch (err) {
+        console.warn(err);
+    }
+    // console.log("freq update");
+}
+
+
+async function deleteHabit(username, index, e) {
+    try {
+        const options = {
+            method: 'DELETE',
+            headers: new Headers({"Authorization": localStorage.getItem('token')}),
+        }
+        const response = await fetch(`http://localhost:3000/users/${username}/habits/${index}`, options);
+        window.location.hash = "dashboard";
     } catch (err) {
         console.warn(err);
     }
