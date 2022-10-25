@@ -317,6 +317,7 @@ async function singleHabit(username, index) {
     }
 }
 
+<<<<<<< Updated upstream
 
 // NOT FINISHED
 async function completedHabit(username, index) {
@@ -381,3 +382,10 @@ async function deleteHabit(username, index, e) {
     }
     // console.log("freq update");
 }
+=======
+module.exports = {
+    requestLogin,
+    requestRegistration,
+    userHabits
+}
+>>>>>>> Stashed changes
