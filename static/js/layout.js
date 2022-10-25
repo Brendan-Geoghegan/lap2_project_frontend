@@ -14,6 +14,23 @@ const registerFields = [
     {tag: "input", attributes: {type: "submit", value: "Register"}}
 ]
 
+const frequencyFormFields = [
+    {tag: "select", attributes: {name: "frequency", id: "frequencyFormSelect"}},
+    {tag: "input", attributes: {type: "submit", value: "Update"}}
+]
+
+const frequencyFields = [
+    {tag: "option", attributes: {value: "Daily"}},
+    {tag: "option", attributes: {value: "Weekly"}},
+    {tag: "option", attributes: {value: "Monthly"}}
+]
+
+const createFields = [
+    {tag: "input", attributes: {type: "text", name: "habit", placeholder: "Enter habit", required: true}},
+    {tag: "select", attributes: {name: "frequency", id: "frequencySelect"}},
+    {tag: "input", attributes: {type: "submit", value: "Create"}}
+]
+
 
 // **********Page content
 updateContent()
@@ -23,6 +40,10 @@ window.addEventListener('hashchange', updateContent);
 function updateContent(){
     console.log("updateContent function");
     let hash = window.location.hash.substring(1);
+    let hashBegin = hash.slice(0, 5);
+    console.log("hashBegin", hashBegin)
+    let hashEnd = hash.slice(5);
+    console.log("hashEnd", hashEnd)
     if (!hash) {
         clearPage();
         homePage();
@@ -35,9 +56,12 @@ function updateContent(){
     } else if (hash == "dashboard") {
         clearPage();
         dashboard();
-    } else if (hash == `habit${index}`) {
+    } else if (hashBegin == "habit" && hashEnd >= 0) {
         clearPage();
-        habitModal(index);
+        habitModal(hashEnd);
+    } else if (hash == "create") {
+        clearPage();
+        createPage();
     }
 }
 
@@ -97,17 +121,88 @@ async function dashboard() {
         habit.addEventListener("click", () => {window.location.hash = `habit${index}`})
         dashboardDiv.appendChild(habit);
     })
+    const createButton = document.createElement('button');
+    createButton.textContent = "+";
+    createButton.addEventListener("click", () => {window.location.hash = "create"})
+    dashboardDiv.appendChild(createButton);
+    logoutButton();
 }
 
-function habitModal(index) {
-    console.log(index);
+async function habitModal(index) {
+    // console.log("index", index);
+    const oneHabit = await singleHabit(localStorage.getItem("username"), index);
+    const habitDiv = document.createElement('div');
+    body.appendChild(habitDiv);
+    const header = document.createElement('h1');
+    header.textContent = oneHabit.habit;
+    habitDiv.appendChild(header);
+    const streak = document.createElement('h2');
+    streak.textContent = `Completion streak: ${oneHabit.streak}`;
+    habitDiv.appendChild(streak);
+    const completionButton = document.createElement('button');
+    completionButton.textContent = `Complete`;
+    completionButton.addEventListener("click", completedHabit(localStorage.getItem("username"), index));
+    habitDiv.appendChild(completionButton);
+
+    const freqUpdateForm = document.createElement("form");
+    frequencyFormFields.forEach(f => {
+        const field = document.createElement(f.tag);
+        Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
+        freqUpdateForm.appendChild(field);
+    })
+    habitDiv.appendChild(freqUpdateForm);
+    const freqSelection = document.querySelector("#frequencyFormSelect");
+    frequencyFields.forEach(f => {
+        const field = document.createElement(f.tag);
+        Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
+        field.textContent = f.attributes.value;
+        freqSelection.appendChild(field);
+    })
+    freqUpdateForm.onsubmit = updateFrequency;
+    backbutton("dashboard");
+    logoutButton();
 }
 
+function createPage() {
+    const createDiv = document.createElement('div');
+    body.appendChild(createDiv);
+    const createForm = document.createElement("form");
+    createFields.forEach(f => {
+        const field = document.createElement(f.tag);
+        Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
+        createForm.appendChild(field);
+    })
+    createDiv.appendChild(createForm);
+    const selectFreq = document.querySelector("#frequencySelect")
+    console.log(selectFreq);
+    frequencyFields.forEach(f => {
+        const field = document.createElement(f.tag);
+        Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
+        field.textContent = f.attributes.value;
+        selectFreq.appendChild(field);
+    })
+    createForm.onsubmit = createHabit;
+    backbutton("dashboard");
+    logoutButton();
+}
 
 function clearPage() {
     body.replaceChildren();
 }
 
+function backbutton(hash) {
+    let backbutton = document.createElement("button")
+    backbutton.textContent = `Back to ${hash}`;
+    backbutton.addEventListener("click", () => {window.location.hash = hash})
+    body.appendChild(backbutton);
+}
+
+function logoutButton() {
+    let logoutbutton = document.createElement("button")
+    logoutbutton.textContent = "Log out";
+    logoutbutton.addEventListener("click", logout)
+    body.appendChild(logoutbutton);
+}
 
 // ******** Requests
 
@@ -189,4 +284,42 @@ async function userHabits(username) {
     }
 }
 
+async function singleHabit(username, index) {
+    try {
+        const options = {
+            headers: new Headers({"Authorization": localStorage.getItem('token')})
+        }
+        const response = await fetch(`http://localhost:3000/users/${username}/habits/${index}`, options);
+        const data = await response.json();
+        console.log("data", data)
+        return data
+    } catch (err) {
+        console.warn(err);
+    }
+}
 
+
+// NOT FINISHED
+async function completedHabit(username, index) {
+    try {
+        const options = {
+            method: 'PATCH',
+            headers: new Headers({"Authorization": localStorage.getItem('token')})
+        }
+        const response = await fetch(`http://localhost:3000/users/${username}/habits/${index}/completed`, options);
+    } catch (err) {
+        console.warn(err);
+    }
+}
+
+// NOT FINISHED
+async function createHabit(e) {
+    e.preventDefault();
+    console.log("create habit");
+}
+
+// NOT FINISHED
+async function updateFrequency(e) {
+    e.preventDefault();
+    console.log("freq update");
+}
