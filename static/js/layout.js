@@ -139,9 +139,15 @@ async function habitModal(index) {
     const streak = document.createElement('h2');
     streak.textContent = `Completion streak: ${oneHabit.streak}`;
     habitDiv.appendChild(streak);
+    const frequency = document.createElement('h2');
+    frequency.textContent = `Completion streak: ${oneHabit.frequency}`;
+    habitDiv.appendChild(frequency);
     const completionButton = document.createElement('button');
     completionButton.textContent = `Complete`;
-    completionButton.addEventListener("click", completedHabit(localStorage.getItem("username"), index));
+    completionButton.addEventListener("click", (e) => {
+        e.preventDefault()
+        completedHabit(localStorage.getItem("username"), index)
+    })
     habitDiv.appendChild(completionButton);
 
     const freqUpdateForm = document.createElement("form");
@@ -158,7 +164,10 @@ async function habitModal(index) {
         field.textContent = f.attributes.value;
         freqSelection.appendChild(field);
     })
-    freqUpdateForm.onsubmit = updateFrequency;
+    freqUpdateForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        updateFrequency(localStorage.getItem("username"), index, e)
+    });
     backbutton("dashboard");
     logoutButton();
 }
@@ -181,7 +190,10 @@ function createPage() {
         field.textContent = f.attributes.value;
         selectFreq.appendChild(field);
     })
-    createForm.onsubmit = createHabit;
+    createForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        createHabit(localStorage.getItem("username"), e)
+    });
     backbutton("dashboard");
     logoutButton();
 }
@@ -301,25 +313,49 @@ async function singleHabit(username, index) {
 
 // NOT FINISHED
 async function completedHabit(username, index) {
+    console.log("completed habit");
     try {
         const options = {
             method: 'PATCH',
             headers: new Headers({"Authorization": localStorage.getItem('token')})
         }
         const response = await fetch(`http://localhost:3000/users/${username}/habits/${index}/completed`, options);
+        updateContent();
     } catch (err) {
         console.warn(err);
     }
 }
 
 // NOT FINISHED
-async function createHabit(e) {
-    e.preventDefault();
-    console.log("create habit");
+async function createHabit(username, e) {
+    // console.log("create habit");
+    try {
+        const options = {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json',  "Authorization": localStorage.getItem('token')},
+            // headers: new Headers({"Authorization": localStorage.getItem('token')}),
+            body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
+        }
+        const response = await fetch(`http://localhost:3000/users/${username}/habits`, options);
+        window.location.hash = "dashboard";
+    } catch (err) {
+        console.warn(err);
+    }
 }
 
 // NOT FINISHED
-async function updateFrequency(e) {
-    e.preventDefault();
-    console.log("freq update");
+async function updateFrequency(username, index, e) {
+    try {
+        const options = {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json',  "Authorization": localStorage.getItem('token')},
+            // headers: new Headers({"Authorization": localStorage.getItem('token')}),
+            body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
+        }
+        const response = await fetch(`http://localhost:3000/users/${username}/habits/${index}/frequency`, options);
+        updateContent();
+    } catch (err) {
+        console.warn(err);
+    }
+    // console.log("freq update");
 }
