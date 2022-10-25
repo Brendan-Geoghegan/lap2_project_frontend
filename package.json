@@ -1,0 +1,36 @@
+{
+  "name": "lap2_project_frontend",
+  "version": "1.0.0",
+  "description": "## Installation & usage ### Installation",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brendan-Geoghegan/lap2_project_frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brendan-Geoghegan/lap2_project_frontend/issues"
+  },
+  "homepage": "https://github.com/Brendan-Geoghegan/lap2_project_frontend#readme",
+  "devDependencies": {
+    "jest": "^29.2.2",
+    "jest-environment-jsdom": "^29.2.2",
+    "jest-fetch-mock": "^3.0.3"
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./test/setupJest.js"
+    ],
+    "testEnvironment": "jsdom"
+  }
+}
