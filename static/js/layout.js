@@ -109,25 +109,25 @@ function homePage() {
 }
 
 function loginPage() {
-    const headerDiv = document.createElement('div');
-    headerDiv.class = "headerDiv"
-    body.appendChild(headerDiv);
+    const loginPageDiv = document.createElement('div');
+    loginPageDiv.id = "loginPageDiv"
+    body.appendChild(loginPageDiv);
 
     const header = document.createElement('h1');
     header.className = "logoHeader";
     header.textContent = "HabiTrackerz";
-    body.appendChild(header);
+    loginPageDiv.appendChild(header);
 
     header.addEventListener("click", () => {window.location.hash = ""})
 
     const loginDiv = document.createElement('div');
     loginDiv.id = "loginDiv";
-    body.appendChild(loginDiv);
+    loginPageDiv.appendChild(loginDiv);
 
     const loginForm = document.createElement("form");
     loginForm.id = "loginForm";
     const loginHeader = document.createElement('h1');
-    loginHeader.textContent = "Login:";
+    loginHeader.textContent = "Login";
     loginForm.appendChild(loginHeader);
     loginFields.forEach(f => {
         const field = document.createElement(f.tag);
@@ -139,25 +139,29 @@ function loginPage() {
 }
 
 function registerPage() {
+    const registerPageDiv = document.createElement('div');
+    registerPageDiv.id = "registerPageDiv"
+    body.appendChild(registerPageDiv);
+    
     const headerDiv = document.createElement('div');
     headerDiv.class = "headerDiv"
-    body.appendChild(headerDiv);
+    registerPageDiv.appendChild(headerDiv);
 
     const header = document.createElement('h1');
     header.className = "logoHeader";
     header.textContent = "HabiTrackerz";
-    body.appendChild(header);
+    registerPageDiv.appendChild(header);
 
     header.addEventListener("click", () => {window.location.hash = ""})
 
     const registerDiv = document.createElement('div');
     registerDiv.id = "registerDiv";
-    body.appendChild(registerDiv);
+    registerPageDiv.appendChild(registerDiv);
     
     const registerForm = document.createElement("form");
     registerForm.id = "registerForm"
     const registerHeader = document.createElement('h1');
-    registerHeader.textContent = "Register:";
+    registerHeader.textContent = "Register";
     registerForm.appendChild(registerHeader);
     registerFields.forEach(f => {
         const field = document.createElement(f.tag);
@@ -169,9 +173,6 @@ function registerPage() {
 }
 
 async function dashboard() {
-    const headerDiv = document.createElement('div');
-    headerDiv.class = "headerDiv"
-    body.appendChild(headerDiv);
 
     const header = document.createElement('h1');
     header.className = "logoHeader";
@@ -181,10 +182,15 @@ async function dashboard() {
     header.addEventListener("click", () => {window.location.hash = ""})
 
     const dashboardDiv = document.createElement('div');
+    dashboardDiv.id = "dashboardDiv"
     body.appendChild(dashboardDiv);
     const dashboardHeader = document.createElement('h1');
-    dashboardHeader.textContent = "Your dashboard:";
+    dashboardHeader.textContent = "Your dashboard";
     dashboardDiv.appendChild(dashboardHeader);
+
+    const dashboardDivGrid = document.createElement('div');
+    dashboardDivGrid.id = "dashboardDivGrid";
+    dashboardDiv.appendChild(dashboardDivGrid)
     const habits = await userHabits(localStorage.getItem("username"));
     console.log("habits", habits);
     habits.forEach((h, index) => {
@@ -192,7 +198,7 @@ async function dashboard() {
         habit.id = "habitButton"
         habit.textContent = `${h.habit}`;
         habit.addEventListener("click", () => {window.location.hash = `habit${index}`})
-        dashboardDiv.appendChild(habit);
+        dashboardDivGrid.appendChild(habit);
         habit.className = "greenButton"
     })
 
@@ -204,7 +210,7 @@ async function dashboard() {
     
     createButton.addEventListener("click", () => {window.location.hash = "create"})
     dashboardDiv.appendChild(createButton);
-    createButton.className = "greenButton"
+    createButton.id = "createButton"
     logoutButton();
 }
 
@@ -309,7 +315,7 @@ function logoutButton() {
     logoutbutton.id = "dashboardLogout"
     logoutbutton.textContent = "Log out";
     logoutbutton.addEventListener("click", logout)
-    body.appendChild(logoutbutton);
+    dashboardDiv.appendChild(logoutbutton);
     logoutbutton.className = "redButton"
 }
 

@@ -27,6 +27,15 @@ body {
   flex-direction: column;
 }
 
+button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
 .logoHeader {
   font-family: "Stick No Bills";
   font-style: italic;
@@ -58,17 +67,6 @@ body {
 #homeBtnDiv {
   display: flex;
   justify-content: space-around;
-}
-
-button {
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-  font-family: "Electrolize";
-  font-style: italic;
 }
 
 .buttonContainer {
@@ -126,37 +124,35 @@ h1 {
   font-family: 'Electrolize';
 }
 
-#loginDiv {
+#loginPageDiv, #registerPageDiv {
   height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#loginDiv, #registerDiv {
   display: flex;
   justify-content: center;
 }
 
-#loginForm {
+#loginForm, #registerFor {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-#registerDiv {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-#registerForm {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 .textInput{
   font-family: 'Electrolize';
   border: grey 2px solid;
   border-radius: 25px;
-  padding: 5%;
-  margin: 5%;
-  transition: border 1s, background-color 1s
+  padding: 10px 15px;
+  margin: 2.5%;
+  transition: border 1s, background-color 1s;
+  width: 280px;
 }
 
 .textInput::placeholder{
@@ -168,12 +164,11 @@ h1 {
   background-color: rgb(186, 186, 186);
 }
 
-
 .greenButton {
   font-family: 'Electrolize';
   color: grey;
-  border: grey 2px solid;
   border-radius: 25px;
+  padding: 7px 17px;
   background-color: white;
   transition: border 1s, color 1s, background-color 1s;
 }
@@ -191,6 +186,7 @@ h1 {
   border-radius: 25px;
   transition: border 1s, color 1s, background-color 1s;
   background-color: white;
+  padding: 7px 17px;
 }
 
 .redButton:hover {
@@ -204,13 +200,13 @@ h1 {
 #dashboardDiv {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   height: 80%;
 }
 #dashboardDivGrid {
-  margin-left: 8.5%;
   display: grid;
-  grid-template-columns: repeat(2, 150px);
+  grid-template-columns: repeat(3, 120px);
   grid-template-rows: repeat(2, 150px);
   justify-content: center;
   align-items: center;
@@ -224,17 +220,15 @@ h1 {
   height: 95px;
 }
 
-#dashboardAdd {
-  margin-top: 30px;
+
+#createButton {
+  border: 2px solid black;
+  border-radius: 50px;
+  margin: 10px;
+  width: 100px;
+  height: 95px;
 }
-
-
 
 #dashboardLogout {
-  
-}
-
-.createHabit {
-  padding: 2px 5px 2px 5px;
-  margin: 0px;
+  margin-top: 80px;
 }
