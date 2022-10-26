@@ -167,6 +167,7 @@ h1 {
 .greenButton {
   font-family: 'Electrolize';
   color: grey;
+  border-radius: 25px;
   padding: 7px 17px;
   background-color: white;
   transition: border 1s, color 1s, background-color 1s;
@@ -211,7 +212,7 @@ h1 {
 #dashboardDivGrid {
   display: grid;
   grid-template-columns: repeat(3, 120px);
-  grid-template-rows: repeat(2, 120px);
+  grid-template-rows: repeat(2, 135px);
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
@@ -232,6 +233,7 @@ h1 {
 							0 -0.25rem 1.5rem rgb(34, 30, 39) inset,
 							0 0.75rem 0.5rem rgba(243, 241, 241, 0.4) inset,
 							0 0.25rem 0.5rem 0 rgb(83, 74, 87) inset;
+              
 }
 
 #addImg {
