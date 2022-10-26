@@ -401,5 +401,10 @@ module.exports = {
     createHabit,
     updateFrequency,
     deleteHabit,
-    singleHabit
+    singleHabit,
+    homePage,
+    clearPage,
+    loginPage,
+    registerPage,
+    dashboard
 }
