@@ -1,33 +1,149 @@
-/* Imports */
-@import url('https://fonts.googleapis.com/css2?family=Dosis&family=Fuzzy+Bubbles:wght@700&family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@800&display=swap');
 
-/* Home page */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: radial-gradient(
+    circle,
+    rgb(233, 151, 42) 0%,
+    rgba(177, 21, 36, 1) 51%,
+    rgba(242, 46, 46, 1) 100%
+  );
+  text-align: center;
+}
+
+/* HomePage */
+
+#homeDiv {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#homePageHeader {
+  font-family: "Stick No Bills";
+  font-style: italic;
+  color: #090808;
+  letter-spacing: 20px;
+  font-size: 55px;
+  text-shadow: 0 0 0.05em #d2e71c, 0 0 0.2em rgb(239, 255, 136),
+    0 0 0.3em rgb(150, 137, 137);
+  letter-spacing: 2px;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+      text-shadow: 0 0 10px rgb(174, 144, 22), 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    
+    to {
+      text-shadow: 0 0 10px #e5c01b, 0 0 20px #e5c01b, 0 0 30px #e5c01b, 0 0 40px #e5c01b, 0 0 50px #e5c01b, 0 0 60px #e5c01b, 0 0 70px #e5c01b;
+    }
+}
+
+#homePageImg {
+    height: 90%;
+}
+
+#homeBtnDiv{
+    display: flex;
+    justify-content: space-around;
+}
 
 button {
-    border: 1px solid black;
-    border-radius: 25px;
-    color: black;
-
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-family: "Electrolize";
+    font-style: italic;
 }
 
-button:hover {
-    color: aliceblue;
-    background-color: grey;
-    border: 2px solid rgb(175, 175, 175);
+.buttonContainer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: 5px 20px;
+  transition: 300ms ease-in-out;
+  z-index: 1;
 }
 
-h1 {
-    font-family: 'Fuzzy Bubbles';
+.buttonContainer:hover {
+  background: rgb(210, 207, 52);
+  transform: scale(1, 1);
+  border: 2px rgb(0, 0, 0) solid;
+  box-shadow: 0 1px 5px #dfc4b8;
 }
 
-#habitFalse {
-    color: red;
+.btn {
+  text-decoration: none;
+  font-size: 1.25rem;
+  color: rgb(79, 15, 5);
+  transition: 0.5s ease, box-shadow 0.3s ease;
 }
 
-#habitTrue {
-    color: green;
+.btn:hover {
+  color: rgb(0, 0, 0);
 }
 
-/* Register/Login page */
+.btn::after {
+  content: "";
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: -50px;
+  left: -100px;
+  background-color: #ff3cac;
+  background-image: linear-gradient(
+    225deg,
+    #f7f7f6 0%,
+    #ea983b 50%,
+    #b50707 100%
+  );
+  z-index: -1;
+  transition: transform 0.5s ease;
+}
 
-/* Habit dashboard */
+.btn:hover::after {
+  transform: rotate(150deg);
+}
+
+/* Login & Register */
+
+#loginDiv {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#registerDiv {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Dashboard */
+
