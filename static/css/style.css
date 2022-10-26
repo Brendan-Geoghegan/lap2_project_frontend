@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
 
 html,
 body {
@@ -25,20 +26,23 @@ body {
 }
 
 h1 {
-  font-family: "Exo";
-  font-style: italic;
+  font-family: "Fugaz One";
+  /* font-style: italic; */
   color: #090808;
   letter-spacing: 20px;
   font-size: 45px;
   text-shadow: 0 0 0.05em #d2e71c, 0 0 0.2em rgb(239, 255, 136),
     0 0 0.3em rgb(150, 137, 137);
-  letter-spacing: 3px;
+  letter-spacing: 2px;
+}
+
+#homePageImg {
+    height: 90%;
 }
 
 #homeBtnDiv{
     display: flex;
     justify-content: space-around;
-    margin-top: 50px;
 }
 
 button {
@@ -48,6 +52,8 @@ button {
     cursor: pointer;
     overflow: hidden;
     outline: none;
+    font-family: "Electrolize";
+    font-style: italic;
 }
 
 .buttonContainer {
@@ -69,7 +75,7 @@ button {
 .btn {
   text-decoration: none;
   font-size: 1.25rem;
-  color: rgb(130, 24, 7);
+  color: rgb(79, 15, 5);
   transition: 0.5s ease, box-shadow 0.3s ease;
 }
 

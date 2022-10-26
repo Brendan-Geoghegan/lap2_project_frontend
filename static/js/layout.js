@@ -73,7 +73,7 @@ function homePage() {
     homeDiv.id = "homeDiv"
     body.appendChild(homeDiv);
     const header = document.createElement('h1');
-    header.textContent = "HabitTrackerz";
+    header.textContent = "HabiTrackerz";
     homeDiv.appendChild(header);
 
     const homePageImgDiv = document.createElement('div');
