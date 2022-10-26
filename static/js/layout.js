@@ -1,3 +1,5 @@
+const serverURL = "http://localhost:3000";
+
 const body = document.querySelector("body");
 
 
