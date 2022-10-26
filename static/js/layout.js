@@ -6,15 +6,15 @@ body.id = "body";
 
 // ***********Form fields
 const loginFields = [
-    {tag: "input", attributes: {type: "text", name: "username", placeholder: "Username", required: true}},
-    {tag: "input", attributes: {type: "password", name: "password", placeholder: "Password", required: true}},
-    {tag: "input", attributes: {type: "submit", value: "Login"}}
+    {tag: "input", attributes: {class: "textInput", type: "text", name: "username", placeholder: "Username", required: true}},
+    {tag: "input", attributes: {class: "textInput", type: "password", name: "password", placeholder: "Password", required: true}},
+    {tag: "input", attributes: {class: "greenButton", type: "submit", value: "Login"}}
 ]
 
 const registerFields = [
-    {tag: "input", attributes: {type: "text", name: "username", placeholder: "Username", required: true}},
-    {tag: "input", attributes: {type: "password", name: "password", placeholder: "Password", required: true}},
-    {tag: "input", attributes: {type: "submit", value: "Register"}}
+    {tag: "input", attributes: {class: "textInput", type: "text", name: "username", placeholder: "Username", required: true}},
+    {tag: "input", attributes: {class: "textInput", type: "password", name: "password", placeholder: "Password", required: true}},
+    {tag: "input", attributes: {class: "greenButton", type: "submit", value: "Register"}}
 ]
 
 const frequencyFormFields = [
@@ -29,9 +29,9 @@ const frequencyFields = [
 ]
 
 const createFields = [
-    {tag: "input", attributes: {type: "text", name: "habit", placeholder: "Enter habit", required: true}},
+    {tag: "input", attributes: {class: "textInput createHabit", type: "text", name: "habit", placeholder: "Enter habit", required: true}},
     {tag: "select", attributes: {name: "frequency", id: "frequencySelect"}},
-    {tag: "input", attributes: {type: "submit", value: "Create"}}
+    {tag: "input", attributes: {class: "greenButton", type: "submit", value: "Create"}}
 ]
 
 
@@ -73,7 +73,7 @@ function homePage() {
     homeDiv.id = "homeDiv"
     body.appendChild(homeDiv);
     const header = document.createElement('h1');
-    header.id = "homePageHeader";
+    header.className = "logoHeader";
     header.textContent = "HabiTrackerz";
     homeDiv.appendChild(header);
 
@@ -109,11 +109,26 @@ function homePage() {
 }
 
 function loginPage() {
+    const headerDiv = document.createElement('div');
+    headerDiv.class = "headerDiv"
+    body.appendChild(headerDiv);
+
+    const header = document.createElement('h1');
+    header.className = "logoHeader";
+    header.textContent = "HabiTrackerz";
+    body.appendChild(header);
+
+    header.addEventListener("click", () => {window.location.hash = ""})
+
     const loginDiv = document.createElement('div');
     loginDiv.id = "loginDiv";
     body.appendChild(loginDiv);
+
     const loginForm = document.createElement("form");
     loginForm.id = "loginForm";
+    const loginHeader = document.createElement('h1');
+    loginHeader.textContent = "Login:";
+    loginForm.appendChild(loginHeader);
     loginFields.forEach(f => {
         const field = document.createElement(f.tag);
         Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
@@ -124,11 +139,26 @@ function loginPage() {
 }
 
 function registerPage() {
+    const headerDiv = document.createElement('div');
+    headerDiv.class = "headerDiv"
+    body.appendChild(headerDiv);
+
+    const header = document.createElement('h1');
+    header.className = "logoHeader";
+    header.textContent = "HabiTrackerz";
+    body.appendChild(header);
+
+    header.addEventListener("click", () => {window.location.hash = ""})
+
     const registerDiv = document.createElement('div');
-    registerDiv.id = "registerDiv"
+    registerDiv.id = "registerDiv";
     body.appendChild(registerDiv);
+    
     const registerForm = document.createElement("form");
     registerForm.id = "registerForm"
+    const registerHeader = document.createElement('h1');
+    registerHeader.textContent = "Register:";
+    registerForm.appendChild(registerHeader);
     registerFields.forEach(f => {
         const field = document.createElement(f.tag);
         Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
@@ -139,11 +169,22 @@ function registerPage() {
 }
 
 async function dashboard() {
+    const headerDiv = document.createElement('div');
+    headerDiv.class = "headerDiv"
+    body.appendChild(headerDiv);
+
+    const header = document.createElement('h1');
+    header.className = "logoHeader";
+    header.textContent = "HabiTrackerz";
+    body.appendChild(header);
+
+    header.addEventListener("click", () => {window.location.hash = ""})
+
     const dashboardDiv = document.createElement('div');
     body.appendChild(dashboardDiv);
-    const header = document.createElement('h1');
-    header.textContent = "Your dashboard:";
-    dashboardDiv.appendChild(header);
+    const dashboardHeader = document.createElement('h1');
+    dashboardHeader.textContent = "Your dashboard:";
+    dashboardDiv.appendChild(dashboardHeader);
     const habits = await userHabits(localStorage.getItem("username"));
     console.log("habits", habits);
     habits.forEach((h, index) => {
@@ -151,11 +192,14 @@ async function dashboard() {
         habit.textContent = `${h.habit}`;
         habit.addEventListener("click", () => {window.location.hash = `habit${index}`})
         dashboardDiv.appendChild(habit);
+        habit.className = "greenButton"
     })
     const createButton = document.createElement('button');
     createButton.textContent = "+";
+    
     createButton.addEventListener("click", () => {window.location.hash = "create"})
     dashboardDiv.appendChild(createButton);
+    createButton.className = "greenButton"
     logoutButton();
 }
 
@@ -180,6 +224,7 @@ async function habitModal(index) {
         completedHabit(localStorage.getItem("username"), index)
     })
     habitDiv.appendChild(completionButton);
+    completionButton.className = "greenButton"
 
     const freqUpdateForm = document.createElement("form");
     frequencyFormFields.forEach(f => {
@@ -206,6 +251,7 @@ async function habitModal(index) {
         deleteHabit(localStorage.getItem("username"), index)
     })
     habitDiv.appendChild(deleteButton);
+    deleteButton.className = "redButton"
     backbutton("dashboard");
     logoutButton();
 }
@@ -213,6 +259,11 @@ async function habitModal(index) {
 function createPage() {
     const createDiv = document.createElement('div');
     body.appendChild(createDiv);
+
+    const createHabitHeader = document.createElement('h1');
+    createHabitHeader.textContent = "Create habit:";
+    createDiv.appendChild(createHabitHeader);
+
     const createForm = document.createElement("form");
     createFields.forEach(f => {
         const field = document.createElement(f.tag);
@@ -245,6 +296,7 @@ function backbutton(hash) {
     backbutton.textContent = `Back to ${hash}`;
     backbutton.addEventListener("click", () => {window.location.hash = hash})
     body.appendChild(backbutton);
+    backbutton.className = "redButton"
 }
 
 function logoutButton() {
@@ -252,6 +304,7 @@ function logoutButton() {
     logoutbutton.textContent = "Log out";
     logoutbutton.addEventListener("click", logout)
     body.appendChild(logoutbutton);
+    logoutbutton.className = "redButton"
 }
 
 // ******** Requests
