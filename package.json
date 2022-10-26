@@ -32,5 +32,8 @@
       "./test/setupJest.js"
     ],
     "testEnvironment": "jsdom"
+  },
+  "dependencies": {
+    "coverage": "^0.4.1"
   }
 }
