@@ -139,23 +139,35 @@ function registerPage() {
 }
 
 async function dashboard() {
-    const dashboardDiv = document.createElement('div');
-    body.appendChild(dashboardDiv);
     const header = document.createElement('h1');
     header.textContent = "Your dashboard:";
-    dashboardDiv.appendChild(header);
+    body.appendChild(header);
+    
+    const dashboardDiv = document.createElement('div');
+    body.appendChild(dashboardDiv);
+    dashboardDiv.id = "dashboardDiv";
+
+    const dashboardDivGrid = document.createElement('div');
+    dashboardDivGrid.id ="dashboardDivGrid";
+    dashboardDiv.appendChild(dashboardDivGrid);
+    
     const habits = await userHabits(localStorage.getItem("username"));
     console.log("habits", habits);
     habits.forEach((h, index) => {
         const habit = document.createElement("button");
+        habit.id = "habitButton"
         habit.textContent = `${h.habit}`;
         habit.addEventListener("click", () => {window.location.hash = `habit${index}`})
-        dashboardDiv.appendChild(habit);
+        dashboardDivGrid.appendChild(habit);
     })
+
+    const dashboardAdd = document.createElement('div');
+    dashboardAdd.id = "dashboardAdd";
+    dashboardDiv.appendChild(dashboardAdd)
     const createButton = document.createElement('button');
     createButton.textContent = "+";
     createButton.addEventListener("click", () => {window.location.hash = "create"})
-    dashboardDiv.appendChild(createButton);
+    dashboardAdd.appendChild(createButton);
     logoutButton();
 }
 
@@ -249,6 +261,7 @@ function backbutton(hash) {
 
 function logoutButton() {
     let logoutbutton = document.createElement("button")
+    logoutbutton.id = "dashboardLogout"
     logoutbutton.textContent = "Log out";
     logoutbutton.addEventListener("click", logout)
     body.appendChild(logoutbutton);

@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Electrolize&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@800&display=swap");
 
 html,
 body {
@@ -41,33 +40,35 @@ body {
 }
 
 @keyframes glow {
-    from {
-      text-shadow: 0 0 10px rgb(174, 144, 22), 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-    }
-    
-    to {
-      text-shadow: 0 0 10px #e5c01b, 0 0 20px #e5c01b, 0 0 30px #e5c01b, 0 0 40px #e5c01b, 0 0 50px #e5c01b, 0 0 60px #e5c01b, 0 0 70px #e5c01b;
-    }
+  from {
+    text-shadow: 0 0 10px rgb(174, 144, 22), 0 0 20px #fff, 0 0 30px #e60073,
+      0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+
+  to {
+    text-shadow: 0 0 10px #e5c01b, 0 0 20px #e5c01b, 0 0 30px #e5c01b,
+      0 0 40px #e5c01b, 0 0 50px #e5c01b, 0 0 60px #e5c01b, 0 0 70px #e5c01b;
+  }
 }
 
 #homePageImg {
-    height: 90%;
+  height: 90%;
 }
 
-#homeBtnDiv{
-    display: flex;
-    justify-content: space-around;
+#homeBtnDiv {
+  display: flex;
+  justify-content: space-around;
 }
 
 button {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
-    font-family: "Electrolize";
-    font-style: italic;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  font-family: "Electrolize";
+  font-style: italic;
 }
 
 .buttonContainer {
@@ -122,28 +123,60 @@ button {
 /* Login & Register */
 
 #loginDiv {
-    height: 100%;
-    display: flex;
-    justify-content: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #loginForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #registerDiv {
-    height: 100%;
-    display: flex;
-    justify-content: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #registerForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Dashboard */
 
+#dashboardDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 80%;
+}
+#dashboardDivGrid {
+  margin-left: 8.5%;
+  display: grid;
+  grid-template-columns: repeat(2, 150px);
+  grid-template-rows: repeat(2, 150px);
+  justify-content: center;
+  align-items: center;
+ }
+
+#habitButton {
+  border: 2px solid black;
+  border-radius: 50px;
+  margin: 10px;
+  width: 100px;
+  height: 95px;
+}
+
+#dashboardAdd {
+  margin-top: 30px;
+}
+
+
+
+#dashboardLogout {
+  
+}
