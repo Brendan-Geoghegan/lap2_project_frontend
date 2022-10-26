@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@800&display=swap');
+
 
 html,
 body {
@@ -16,6 +17,8 @@ body {
   text-align: center;
 }
 
+/* HomePage */
+
 #homeDiv {
   height: 100%;
   padding: 0;
@@ -25,12 +28,12 @@ body {
   flex-direction: column;
 }
 
-h1 {
-  font-family: "Fugaz One";
-  /* font-style: italic; */
+#homePageHeader {
+  font-family: "Stick No Bills";
+  font-style: italic;
   color: #090808;
   letter-spacing: 20px;
-  font-size: 45px;
+  font-size: 55px;
   text-shadow: 0 0 0.05em #d2e71c, 0 0 0.2em rgb(239, 255, 136),
     0 0 0.3em rgb(150, 137, 137);
   letter-spacing: 2px;
@@ -115,3 +118,32 @@ button {
 .btn:hover::after {
   transform: rotate(150deg);
 }
+
+/* Login & Register */
+
+#loginDiv {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#registerDiv {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Dashboard */
+

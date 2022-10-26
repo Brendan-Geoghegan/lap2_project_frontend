@@ -73,6 +73,7 @@ function homePage() {
     homeDiv.id = "homeDiv"
     body.appendChild(homeDiv);
     const header = document.createElement('h1');
+    header.id = "homePageHeader";
     header.textContent = "HabiTrackerz";
     homeDiv.appendChild(header);
 
@@ -109,8 +110,10 @@ function homePage() {
 
 function loginPage() {
     const loginDiv = document.createElement('div');
+    loginDiv.id = "loginDiv";
     body.appendChild(loginDiv);
     const loginForm = document.createElement("form");
+    loginForm.id = "loginForm";
     loginFields.forEach(f => {
         const field = document.createElement(f.tag);
         Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
@@ -122,8 +125,10 @@ function loginPage() {
 
 function registerPage() {
     const registerDiv = document.createElement('div');
+    registerDiv.id = "registerDiv"
     body.appendChild(registerDiv);
     const registerForm = document.createElement("form");
+    registerForm.id = "registerForm"
     registerFields.forEach(f => {
         const field = document.createElement(f.tag);
         Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
