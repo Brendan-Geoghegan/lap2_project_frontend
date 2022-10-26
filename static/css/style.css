@@ -30,7 +30,7 @@ h1 {
   color: #090808;
   letter-spacing: 20px;
   font-size: 45px;
-  text-shadow: 0 0 0.05em #d2c1a7, 0 0 0.2em rgb(215, 195, 195),
+  text-shadow: 0 0 0.05em #d2e71c, 0 0 0.2em rgb(239, 255, 136),
     0 0 0.3em rgb(150, 137, 137);
   letter-spacing: 3px;
 }
@@ -38,6 +38,7 @@ h1 {
 #homeBtnDiv{
     display: flex;
     justify-content: space-around;
+    margin-top: 50px;
 }
 
 button {

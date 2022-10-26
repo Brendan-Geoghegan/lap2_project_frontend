@@ -72,10 +72,18 @@ function homePage() {
     const header = document.createElement('h1');
     header.textContent = "HabitTrackerz";
     homeDiv.appendChild(header);
+
+    const homePageImgDiv = document.createElement('div');
+    homePageImgDiv.id = "homePageImgDiv"
+    homeDiv.appendChild(homePageImgDiv)
+    const homePageImg = document.createElement('img');
+    homePageImg.id = "homePageImg";
+    homePageImg.src = 'static/js/img/homePageImg.png';
+    homePageImgDiv.appendChild(homePageImg);
+
     const homeBtnDiv = document.createElement('div');
     homeBtnDiv.id = "homeBtnDiv"
     homeDiv.appendChild(homeBtnDiv);
-
 
     const loginBtnDiv = document.createElement('div');
     loginBtnDiv.className = "buttonContainer";
