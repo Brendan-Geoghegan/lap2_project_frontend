@@ -396,3 +396,13 @@ async function deleteHabit(username, index, e) {
     }
     // console.log("freq update");
 }
+
+module.exports = {
+    requestLogin,
+    requestRegistration,
+    userHabits,
+    completedHabit,
+    createHabit,
+    updateFrequency,
+    deleteHabit
+}
