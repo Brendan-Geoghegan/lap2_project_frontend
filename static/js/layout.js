@@ -1,5 +1,5 @@
-// const serverURL = "http://localhost:3000";
-const serverURL = "https://daboiz-habit-tracker.herokuapp.com";
+const serverURL = "http://localhost:3000";
+// const serverURL = "https://daboiz-habit-tracker.herokuapp.com";
 
 const body = document.querySelector("body");
 body.id = "body";
@@ -41,12 +41,9 @@ updateContent()
 window.addEventListener('hashchange', updateContent);
 
 function updateContent(){
-    console.log("updateContent function");
     let hash = window.location.hash.substring(1);
     let hashBegin = hash.slice(0, 5);
-    console.log("hashBegin", hashBegin)
     let hashEnd = hash.slice(5);
-    console.log("hashEnd", hashEnd)
     if (!hash) {
         clearPage();
         homePage();
@@ -119,7 +116,10 @@ function loginPage() {
         Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
         loginForm.appendChild(field);
     })
-    loginForm.onsubmit = requestLogin;
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        requestLogin(e)
+    })
     loginDiv.appendChild(loginForm)
 }
 
@@ -134,7 +134,11 @@ function registerPage() {
         Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
         registerForm.appendChild(field);
     })
-    registerForm.onsubmit = requestRegistration;
+    // registerForm.onsubmit = requestRegistration;
+    registerForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        requestRegistration(e)
+    })
     registerDiv.appendChild(registerForm)
 }
 
@@ -160,7 +164,6 @@ async function dashboard() {
 }
 
 async function habitModal(index) {
-    // console.log("index", index);
     const oneHabit = await singleHabit(localStorage.getItem("username"), index);
     const habitDiv = document.createElement('div');
     body.appendChild(habitDiv);
@@ -175,9 +178,10 @@ async function habitModal(index) {
     habitDiv.appendChild(frequency);
     const completionButton = document.createElement('button');
     completionButton.textContent = `Complete`;
-    completionButton.addEventListener("click", (e) => {
+    completionButton.addEventListener("click", async (e) => {
         e.preventDefault()
-        completedHabit(localStorage.getItem("username"), index)
+        await completedHabit(localStorage.getItem("username"), index)
+        updateContent()
     })
     habitDiv.appendChild(completionButton);
 
@@ -195,9 +199,10 @@ async function habitModal(index) {
         field.textContent = f.attributes.value;
         freqSelection.appendChild(field);
     })
-    freqUpdateForm.addEventListener("submit", (e) => {
+    freqUpdateForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-        updateFrequency(localStorage.getItem("username"), index, e)
+        await updateFrequency(localStorage.getItem("username"), index, e)
+        updateContent()
     });
     const deleteButton = document.createElement('button');
     deleteButton.textContent = `Delete`;
@@ -257,7 +262,6 @@ function logoutButton() {
 // ******** Requests
 
 async function requestLogin(e){
-    e.preventDefault();
     try {
         const options = {
             method: 'POST',
@@ -274,13 +278,9 @@ async function requestLogin(e){
 }
 
 function login(data){
-    // localStorage.setItem('username', data.user);
     const payload = jwt_decode(data.token);
-    // console.log(payload, "payload");
-    // console.log(data, "data");
     localStorage.setItem('token', data.token);
     localStorage.setItem('username', payload.username);
-    // location.hash = '#feed';
     window.location.hash = "dashboard";
 }
 
@@ -289,14 +289,8 @@ function logout(){
     location.hash = 'login';
 }
 
-// async function requestLogin(e) {
-//     e.preventDefault();
-//     console.log("logging in");
-//     window.location.hash = "dashboard"
-// }
 
 async function requestRegistration(e) {
-    e.preventDefault();
     try {
         const options = {
             method: 'POST',
@@ -312,14 +306,8 @@ async function requestRegistration(e) {
     }
 }
 
-// async function requestRegistrastion(e) {
-//     e.preventDefault();
-//     console.log("registering");
-//     window.location.hash = "dashboard"
-// }
 
 async function userHabits(username) {
-    console.log("get all habits", localStorage.getItem("token"));
     try {
         const options = {
             headers: new Headers({"Authorization": localStorage.getItem('token')})
@@ -349,7 +337,6 @@ async function singleHabit(username, index) {
 }
 
 
-// NOT FINISHED
 async function completedHabit(username, index) {
     console.log("completed habit");
     try {
@@ -358,20 +345,17 @@ async function completedHabit(username, index) {
             headers: new Headers({"Authorization": localStorage.getItem('token')})
         }
         const response = await fetch(`${serverURL}/users/${username}/habits/${index}/completed`, options);
-        updateContent();
+        // updateContent();
     } catch (err) {
         console.warn(err);
     }
 }
 
-// NOT FINISHED
 async function createHabit(username, e) {
-    // console.log("create habit");
     try {
         const options = {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json',  "Authorization": localStorage.getItem('token')},
-            // headers: new Headers({"Authorization": localStorage.getItem('token')}),
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
         const response = await fetch(`${serverURL}/users/${username}/habits`, options);
@@ -381,21 +365,18 @@ async function createHabit(username, e) {
     }
 }
 
-// NOT FINISHED
 async function updateFrequency(username, index, e) {
     try {
         const options = {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json',  "Authorization": localStorage.getItem('token')},
-            // headers: new Headers({"Authorization": localStorage.getItem('token')}),
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
         const response = await fetch(`${serverURL}/users/${username}/habits/${index}/frequency`, options);
-        updateContent();
+        // updateContent();
     } catch (err) {
         console.warn(err);
     }
-    // console.log("freq update");
 }
 
 
@@ -410,7 +391,6 @@ async function deleteHabit(username, index, e) {
     } catch (err) {
         console.warn(err);
     }
-    // console.log("freq update");
 }
 
 module.exports = {
@@ -420,5 +400,6 @@ module.exports = {
     completedHabit,
     createHabit,
     updateFrequency,
-    deleteHabit
+    deleteHabit,
+    singleHabit
 }
