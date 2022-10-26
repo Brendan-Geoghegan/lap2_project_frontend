@@ -67,6 +67,7 @@ function updateContent(){
 
 function homePage() {
     const homeDiv = document.createElement('div');
+    homeDiv.id = "home";
     body.appendChild(homeDiv);
     const header = document.createElement('h1');
     header.textContent = "Welcome to HabitTrackerz";
@@ -140,7 +141,7 @@ async function habitModal(index) {
     streak.textContent = `Completion streak: ${oneHabit.streak}`;
     habitDiv.appendChild(streak);
     const frequency = document.createElement('h2');
-    frequency.textContent = `Completion streak: ${oneHabit.frequency}`;
+    frequency.textContent = `Frequency: ${oneHabit.frequency}`;
     habitDiv.appendChild(frequency);
     const completionButton = document.createElement('button');
     completionButton.textContent = `Complete`;
