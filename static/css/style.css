@@ -9,7 +9,7 @@ body {
   margin: 0;
   background: radial-gradient(
     circle,
-    rgba(228, 109, 60, 1) 0%,
+    rgb(233, 151, 42) 0%,
     rgba(177, 21, 36, 1) 51%,
     rgba(242, 46, 46, 1) 100%
   );
@@ -34,6 +34,17 @@ h1 {
   text-shadow: 0 0 0.05em #d2e71c, 0 0 0.2em rgb(239, 255, 136),
     0 0 0.3em rgb(150, 137, 137);
   letter-spacing: 2px;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+      text-shadow: 0 0 10px rgb(174, 144, 22), 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    
+    to {
+      text-shadow: 0 0 10px #e5c01b, 0 0 20px #e5c01b, 0 0 30px #e5c01b, 0 0 40px #e5c01b, 0 0 50px #e5c01b, 0 0 60px #e5c01b, 0 0 70px #e5c01b;
+    }
 }
 
 #homePageImg {
