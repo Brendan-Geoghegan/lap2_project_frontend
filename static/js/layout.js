@@ -176,6 +176,7 @@ async function dashboard() {
 
     const header = document.createElement('h1');
     header.className = "logoHeader";
+    header.id = "dashboardLogo"
     header.textContent = "HabiTrackerz";
     body.appendChild(header);
 
@@ -202,15 +203,23 @@ async function dashboard() {
         habit.className = "greenButton"
     })
 
-    const dashboardAdd = document.createElement('div');
-    dashboardAdd.id = "dashboardAdd";
-    dashboardDiv.appendChild(dashboardAdd)
     const createButton = document.createElement('button');
-    createButton.textContent = "+";
-    
-    createButton.addEventListener("click", () => {window.location.hash = "create"})
+    const addImg = document.createElement('img');
+    addImg.id = "addImg";
+    addImg.src = "static/js/img/add.png"
+
+    createButton.appendChild(addImg);
+    createButton.addEventListener("click", () => {
+        window.location.hash = "create";
+        rotateImg();
+    });
+    function rotateImg() {
+        document.getElementById("addImg").style.transform = "rotate(360deg)";
+    }
     dashboardDiv.appendChild(createButton);
-    createButton.id = "createButton"
+    createButton.id = "habitButton";
+    createButton.className = "createButton";
+
     logoutButton();
 }
 
