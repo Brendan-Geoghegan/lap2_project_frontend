@@ -27,7 +27,7 @@ body {
   flex-direction: column;
 }
 
-#homePageHeader {
+.logoHeader {
   font-family: "Stick No Bills";
   font-style: italic;
   color: #090808;
@@ -122,6 +122,10 @@ button {
 
 /* Login & Register */
 
+h1 {
+  font-family: 'Electrolize';
+}
+
 #loginDiv {
   height: 100%;
   display: flex;
@@ -144,6 +148,55 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.textInput{
+  font-family: 'Electrolize';
+  border: grey 2px solid;
+  border-radius: 25px;
+  padding: 5%;
+  margin: 5%;
+  transition: border 1s, background-color 1s
+}
+
+.textInput::placeholder{
+  font-family: 'Electrolize';
+}
+
+.textInput:hover {
+  border: green 2px solid;
+  background-color: rgb(186, 186, 186);
+}
+
+
+.greenButton {
+  font-family: 'Electrolize';
+  color: grey;
+  border: grey 2px solid;
+  border-radius: 25px;
+  background-color: white;
+  transition: border 1s, color 1s, background-color 1s;
+}
+
+.greenButton:hover {
+  border: green 2px solid;
+  color: green;
+  background-color: lightgray;
+}
+
+.redButton {
+  font-family: 'Electrolize';
+  color: grey;
+  border: grey 2px solid;
+  border-radius: 25px;
+  transition: border 1s, color 1s, background-color 1s;
+  background-color: white;
+}
+
+.redButton:hover {
+  border: red 2px solid;
+  color: red;
+  background-color: lightgray;
 }
 
 /* Dashboard */
@@ -179,4 +232,9 @@ button {
 
 #dashboardLogout {
   
+}
+
+.createHabit {
+  padding: 2px 5px 2px 5px;
+  margin: 0px;
 }

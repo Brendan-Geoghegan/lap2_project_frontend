@@ -32,5 +32,8 @@
       "./test/setupJest.js"
     ],
     "testEnvironment": "jsdom"
+  },
+  "dependencies": {
+    "animejs": "^3.2.1"
   }
 }
