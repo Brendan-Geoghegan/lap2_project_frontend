@@ -1,5 +1,5 @@
 const body = document.querySelector("body");
-
+body.id = "body";
 
 // ***********Form fields
 const loginFields = [
@@ -67,17 +67,32 @@ function updateContent(){
 
 function homePage() {
     const homeDiv = document.createElement('div');
+    homeDiv.id = "homeDiv"
     body.appendChild(homeDiv);
     const header = document.createElement('h1');
-    header.textContent = "Welcome to HabitTrackerz";
+    header.textContent = "HabitTrackerz";
     homeDiv.appendChild(header);
+    const homeBtnDiv = document.createElement('div');
+    homeBtnDiv.id = "homeBtnDiv"
+    homeDiv.appendChild(homeBtnDiv);
+
+
+    const loginBtnDiv = document.createElement('div');
+    loginBtnDiv.className = "buttonContainer";
+    homeBtnDiv.appendChild(loginBtnDiv)
     const loginButton = document.createElement("button")
+    loginButton.className = "btn";
     loginButton.textContent = "Login";
-    homeDiv.appendChild(loginButton);
+    loginBtnDiv.appendChild(loginButton);
     loginButton.addEventListener("click", () => {window.location.hash = "login"})
+
+    const registerBtnDiv = document.createElement('div')
+    registerBtnDiv.className = "buttonContainer";
+    homeBtnDiv.appendChild(registerBtnDiv)
     const registerButton = document.createElement("button")
+    registerButton.className = "btn";
     registerButton.textContent = "Register";
-    homeDiv.appendChild(registerButton);
+    registerBtnDiv.appendChild(registerButton);
     registerButton.addEventListener("click", () => {window.location.hash = "register"})
 }
 
