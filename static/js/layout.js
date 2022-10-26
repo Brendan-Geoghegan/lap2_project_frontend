@@ -393,5 +393,9 @@ module.exports = {
     clearPage,
     loginPage,
     registerPage,
-    dashboard
+    dashboard,
+    createPage,
+    backbutton,
+    logoutButton,
+    habitModal
 }

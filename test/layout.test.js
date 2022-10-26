@@ -53,13 +53,29 @@ describe('layout functions', () => {
         })
     })
 
-    // describe('registerPage', () => {
-    //     test('it has a form', () => {
-    //         modeHelpers.registerPage();
-    //         let form = document.querySelector('form')
-    //         expect(form).toBeTruthy();
-    //     })
-    // })
+    describe('createPage', () => {
+        test('it has a form', () => {
+            modeHelpers.createPage();
+            let form = document.querySelector('form')
+            expect(form).toBeTruthy();
+        })
+    })
+
+    describe('backbutton', () => {
+        test('it has a button', () => {
+            modeHelpers.backbutton();
+            let button = document.querySelector('button')
+            expect(button).toBeTruthy();
+        })
+    })
+
+    describe('logoutButton', () => {
+        test('it has a form', () => {
+            modeHelpers.logoutButton();
+            let button = document.querySelector('button')
+            expect(button).toBeTruthy();
+        })
+    })
 
     // describe('dashboard', () => {
     //     test('it has a form', () => {
