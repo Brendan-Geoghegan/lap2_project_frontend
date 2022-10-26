@@ -1,3 +1,6 @@
+// const serverURL = "http://localhost:3000";
+const serverURL = "https://daboiz-habit-tracker.herokuapp.com";
+
 const body = document.querySelector("body");
 body.id = "body";
 
@@ -155,7 +158,7 @@ async function habitModal(index) {
     streak.textContent = `Completion streak: ${oneHabit.streak}`;
     habitDiv.appendChild(streak);
     const frequency = document.createElement('h2');
-    frequency.textContent = `Completion streak: ${oneHabit.frequency}`;
+    frequency.textContent = `Frequency: ${oneHabit.frequency}`;
     habitDiv.appendChild(frequency);
     const completionButton = document.createElement('button');
     completionButton.textContent = `Complete`;
@@ -248,7 +251,7 @@ async function requestLogin(e){
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
-        const r = await fetch(`http://localhost:3000/auth/login`, options)
+        const r = await fetch(`${serverURL}/auth/login`, options)
         const data = await r.json()
         if (data.err){ throw Error(data.err); }
         login(data);
@@ -287,7 +290,7 @@ async function requestRegistration(e) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
-        const r = await fetch(`http://localhost:3000/auth/register`, options)
+        const r = await fetch(`${serverURL}/auth/register`, options)
         const data = await r.json()
         if (data.err){ throw Error(data.err) }
         requestLogin(e);
@@ -308,7 +311,7 @@ async function userHabits(username) {
         const options = {
             headers: new Headers({"Authorization": localStorage.getItem('token')})
         }
-        const response = await fetch(`http://localhost:3000/users/${username}`, options);
+        const response = await fetch(`${serverURL}/users/${username}`, options);
         const data = await response.json();
         console.log("data", data)
         console.log("data[0].habits", data[0].habits)
@@ -323,7 +326,7 @@ async function singleHabit(username, index) {
         const options = {
             headers: new Headers({"Authorization": localStorage.getItem('token')})
         }
-        const response = await fetch(`http://localhost:3000/users/${username}/habits/${index}`, options);
+        const response = await fetch(`${serverURL}/users/${username}/habits/${index}`, options);
         const data = await response.json();
         console.log("data", data)
         return data
@@ -341,7 +344,7 @@ async function completedHabit(username, index) {
             method: 'PATCH',
             headers: new Headers({"Authorization": localStorage.getItem('token')})
         }
-        const response = await fetch(`http://localhost:3000/users/${username}/habits/${index}/completed`, options);
+        const response = await fetch(`${serverURL}/users/${username}/habits/${index}/completed`, options);
         updateContent();
     } catch (err) {
         console.warn(err);
@@ -358,7 +361,7 @@ async function createHabit(username, e) {
             // headers: new Headers({"Authorization": localStorage.getItem('token')}),
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
-        const response = await fetch(`http://localhost:3000/users/${username}/habits`, options);
+        const response = await fetch(`${serverURL}/users/${username}/habits`, options);
         window.location.hash = "dashboard";
     } catch (err) {
         console.warn(err);
@@ -374,7 +377,7 @@ async function updateFrequency(username, index, e) {
             // headers: new Headers({"Authorization": localStorage.getItem('token')}),
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
-        const response = await fetch(`http://localhost:3000/users/${username}/habits/${index}/frequency`, options);
+        const response = await fetch(`${serverURL}/users/${username}/habits/${index}/frequency`, options);
         updateContent();
     } catch (err) {
         console.warn(err);
@@ -389,7 +392,7 @@ async function deleteHabit(username, index, e) {
             method: 'DELETE',
             headers: new Headers({"Authorization": localStorage.getItem('token')}),
         }
-        const response = await fetch(`http://localhost:3000/users/${username}/habits/${index}`, options);
+        const response = await fetch(`${serverURL}/users/${username}/habits/${index}`, options);
         window.location.hash = "dashboard";
     } catch (err) {
         console.warn(err);
