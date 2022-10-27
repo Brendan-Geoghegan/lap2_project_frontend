@@ -77,6 +77,14 @@ describe('layout functions', () => {
         })
     })
 
+
+    describe('clearPage', () => {
+        test('it is empty', () => {
+            modeHelpers.clearPage();
+            expect(body.innerHTML).toEqual("");
+        })
+    })
+
     // describe('capitalise', () => {
     //     test('it capitalises the first letter of a string', () => {
     //         const test = modeHelpers.capitalise("test")
@@ -93,4 +101,5 @@ describe('layout functions', () => {
             
     //     })
     // })
+
 })
