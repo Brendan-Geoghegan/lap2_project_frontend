@@ -27,8 +27,8 @@ describe('layout functions with fetch requests', () => {
             fetch.mockResponseOnce(JSON.stringify([{ habits: [{habit: "running"}] }]))
             const res = await modeHelpers.dashboard()
             expect(fetch.mock.calls.length).toEqual(1)
-            let h1 = document.querySelector('h1')
-            expect(h1.textContent).toContain('Your dashboard:');
+            let h1 = document.getElementById('dashboardh1')
+            expect(h1.textContent).toContain('Your dashboard');
             expect(h1).toBeTruthy();
         })
     })
@@ -39,7 +39,7 @@ describe('layout functions with fetch requests', () => {
             const res = await modeHelpers.habitModal(0)
             expect(fetch.mock.calls.length).toEqual(1)
             let h1 = document.querySelector('h1')
-            expect(h1.textContent).toContain('running');
+            expect(h1.textContent).toContain('Running');
             expect(h1).toBeTruthy();
         })
     })

@@ -32,7 +32,7 @@ describe('layout functions', () => {
         test('it has a h1 and buttons', () => {
             modeHelpers.homePage();
             let h1 = document.querySelector('h1')
-            expect(h1.textContent).toContain('HabitTrackerz');
+            expect(h1.textContent).toContain('HabiTrackerz');
             expect(h1).toBeTruthy();
         })
     })
@@ -77,10 +77,29 @@ describe('layout functions', () => {
         })
     })
 
+
     describe('clearPage', () => {
         test('it is empty', () => {
             modeHelpers.clearPage();
             expect(body.innerHTML).toEqual("");
         })
     })
+
+    // describe('capitalise', () => {
+    //     test('it capitalises the first letter of a string', () => {
+    //         const test = modeHelpers.capitalise("test")
+    //         expect(test).toBe("Test")
+    //     })
+    // })
+
+    // describe('dashboard', () => {
+    //     test('it has a form', () => {
+    //         modeHelpers.dashboard();
+    //         let h1 = document.querySelector('h1')
+    //         expect(h1.textContent).toContain('Your dashboard');
+    //         expect(h1).toBeTruthy();
+            
+    //     })
+    // })
+
 })
