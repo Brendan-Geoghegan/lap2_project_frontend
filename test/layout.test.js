@@ -77,11 +77,18 @@ describe('layout functions', () => {
         })
     })
 
+    // describe('capitalise', () => {
+    //     test('it capitalises the first letter of a string', () => {
+    //         const test = modeHelpers.capitalise("test")
+    //         expect(test).toBe("Test")
+    //     })
+    // })
+
     // describe('dashboard', () => {
     //     test('it has a form', () => {
     //         modeHelpers.dashboard();
     //         let h1 = document.querySelector('h1')
-    //         expect(h1.textContent).toContain('Your dashboard:');
+    //         expect(h1.textContent).toContain('Your dashboard');
     //         expect(h1).toBeTruthy();
             
     //     })

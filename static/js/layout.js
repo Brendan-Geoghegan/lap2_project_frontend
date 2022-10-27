@@ -232,16 +232,15 @@ async function dashboard() {
     logoutButton();
 }
 
+function capitalise(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 async function habitModal(index) {
     const oneHabit = await singleHabit(localStorage.getItem("username"), index);
     const habitDiv = document.createElement('div');
     body.appendChild(habitDiv);
     const header = document.createElement('h1');
-
-    function capitalise(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
     header.textContent = capitalise(oneHabit.habit);
     habitDiv.appendChild(header);
     const streak = document.createElement('h2');
@@ -499,5 +498,6 @@ module.exports = {
     createPage,
     backbutton,
     logoutButton,
-    habitModal
+    habitModal,
+    capitalise
 }
