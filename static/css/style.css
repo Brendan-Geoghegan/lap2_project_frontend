@@ -1,19 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Electrolize&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@800&display=swap");
 
 html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
-  background: radial-gradient(
-    circle,
-    rgb(233, 151, 42) 0%,
-    rgba(177, 21, 36, 1) 51%,
-    rgba(242, 46, 46, 1) 100%
-  );
+  background: radial-gradient(circle,
+      rgb(233, 151, 42) 0%,
+      rgba(177, 21, 36, 1) 51%,
+      rgba(242, 46, 46, 1) 100%);
   text-align: center;
 }
 
@@ -28,7 +26,16 @@ body {
   flex-direction: column;
 }
 
-#homePageHeader {
+button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.logoHeader {
   font-family: "Stick No Bills";
   font-style: italic;
   color: #090808;
@@ -38,36 +45,28 @@ body {
     0 0 0.3em rgb(150, 137, 137);
   letter-spacing: 2px;
   animation: glow 1s ease-in-out infinite alternate;
+  cursor: pointer;
 }
 
 @keyframes glow {
-    from {
-      text-shadow: 0 0 10px rgb(174, 144, 22), 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-    }
-    
-    to {
-      text-shadow: 0 0 10px #e5c01b, 0 0 20px #e5c01b, 0 0 30px #e5c01b, 0 0 40px #e5c01b, 0 0 50px #e5c01b, 0 0 60px #e5c01b, 0 0 70px #e5c01b;
-    }
+  from {
+    text-shadow: 0 0 10px rgb(174, 144, 22), 0 0 20px #fff, 0 0 30px #e60073,
+      0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+
+  to {
+    text-shadow: 0 0 10px #e5c01b, 0 0 20px #e5c01b, 0 0 30px #e5c01b,
+      0 0 40px #e5c01b, 0 0 50px #e5c01b, 0 0 60px #e5c01b, 0 0 70px #e5c01b;
+  }
 }
 
 #homePageImg {
-    height: 90%;
+  height: 90%;
 }
 
-#homeBtnDiv{
-    display: flex;
-    justify-content: space-around;
-}
-
-button {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
-    font-family: "Electrolize";
-    font-style: italic;
+#homeBtnDiv {
+  display: flex;
+  justify-content: space-around;
 }
 
 .buttonContainer {
@@ -105,12 +104,10 @@ button {
   top: -50px;
   left: -100px;
   background-color: #ff3cac;
-  background-image: linear-gradient(
-    225deg,
-    #f7f7f6 0%,
-    #ea983b 50%,
-    #b50707 100%
-  );
+  background-image: linear-gradient(225deg,
+      #f7f7f6 0%,
+      #ea983b 50%,
+      #b50707 100%);
   z-index: -1;
   transition: transform 0.5s ease;
 }
@@ -121,29 +118,160 @@ button {
 
 /* Login & Register */
 
-#loginDiv {
-    height: 100%;
-    display: flex;
-    justify-content: center;
+h1 {
+  font-family: 'Electrolize';
 }
 
-#loginForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+#loginPageDiv,
+#registerPageDiv {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
+#loginDiv,
 #registerDiv {
-    height: 100%;
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-#registerForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+#loginForm,
+#registerFor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.textInput {
+  font-family: 'Electrolize';
+  border: grey 2px solid;
+  border-radius: 25px;
+  padding: 10px 15px;
+  margin: 2.5%;
+  transition: border 1s, background-color 1s;
+  width: 280px;
+}
+
+.textInput::placeholder {
+  font-family: 'Electrolize';
+}
+
+.textInput:hover {
+  border: green 2px solid;
+  background-color: rgb(186, 186, 186);
+}
+
+.greenButton {
+  font-family: 'Electrolize';
+  color: grey;
+  border: grey 2px solid;
+  border-radius: 25px;
+  padding: 7px 17px;
+  background-color: white;
+  transition: border 1s, color 1s, background-color 1s;
+}
+
+.greenButton:hover {
+  border: green 2px solid;
+  color: green;
+  background-color: rgb(150, 150, 150);
+  cursor: pointer;
+}
+
+.redButton {
+  font-family: 'Electrolize';
+  color: grey;
+  border: grey 2px solid;
+  border-radius: 25px;
+  transition: border 1s, color 1s, background-color 1s;
+  background-color: white;
+  padding: 7px 17px;
+}
+
+.redButton:hover {
+  border: red 2px solid;
+  color: red;
+  background-color: rgb(150, 150, 150);
 }
 
 /* Dashboard */
 
+#dashboardLogo {
+  margin-bottom: 0px;
+  margin-top: 15px;
+}
+
+#dashboardh1 {
+  border: 2px solid;
+  padding: 10px 25px;
+  border-radius: 25px;
+}
+
+#dashboardDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#dashboardDivGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(2, 135px);
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#habitButton {
+  border: 2px solid black;
+  border-radius: 50px;
+  margin: 10px;
+  width: 100px;
+  height: 95px;
+  text-transform: capitalize;
+  font-style: italic;
+  color: #e5c01b;
+  background-image: linear-gradient(-180deg, #362c33 0%, #221620 100%);
+  box-shadow: 0 1rem 1.25rem 0 rgba(67, 67, 110, 0.5),
+    0 -0.25rem 1.5rem rgb(34, 30, 39) inset,
+    0 0.75rem 0.5rem rgba(243, 241, 241, 0.4) inset,
+    0 0.25rem 0.5rem 0 rgb(83, 74, 87) inset;
+}
+
+#dashboardFooter {
+  margin-bottom: 25px;
+}
+
+#addImg {
+  width: 50px;
+  transition: 1s;
+}
+
+#addImg:active {
+  transform: rotate(359deg);
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+#logoutFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#streak, #frequency {
+  font-family: "stick no bills";
+}
