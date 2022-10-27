@@ -211,8 +211,10 @@ async function dashboard() {
 
     createButton.appendChild(addImg);
     createButton.addEventListener("click", () => {
-        window.location.hash = "create";
         rotateImg();
+        setTimeout(() => {
+            window.location.hash = 'create';
+        }, 1000);
     });
     function rotateImg() {
         document.getElementById("addImg").style.transform = "rotate(360deg)";
