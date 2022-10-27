@@ -32,7 +32,7 @@ describe('layout functions', () => {
         test('it has a h1 and buttons', () => {
             modeHelpers.homePage();
             let h1 = document.querySelector('h1')
-            expect(h1.textContent).toContain('HabitTrackerz');
+            expect(h1.textContent).toContain('HabiTrackerz');
             expect(h1).toBeTruthy();
         })
     })
