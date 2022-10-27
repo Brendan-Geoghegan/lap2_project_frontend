@@ -76,7 +76,7 @@ FNDA:8,(anonymous_26)
 FNDA:3,(anonymous_27)
 FNDA:3,(anonymous_28)
 FNDA:0,(anonymous_29)
-FNDA:11,clearPage
+FNDA:13,clearPage
 FNDA:3,backbutton
 FNDA:0,(anonymous_32)
 FNDA:4,logoutButton
@@ -248,7 +248,7 @@ DA:224,0
 DA:225,0
 DA:227,1
 DA:228,1
-DA:232,11
+DA:232,13
 DA:236,3
 DA:237,3
 DA:238,3

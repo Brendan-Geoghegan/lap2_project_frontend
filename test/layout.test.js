@@ -77,13 +77,10 @@ describe('layout functions', () => {
         })
     })
 
-    // describe('dashboard', () => {
-    //     test('it has a form', () => {
-    //         modeHelpers.dashboard();
-    //         let h1 = document.querySelector('h1')
-    //         expect(h1.textContent).toContain('Your dashboard:');
-    //         expect(h1).toBeTruthy();
-            
-    //     })
-    // })
+    describe('clearPage', () => {
+        test('it is empty', () => {
+            modeHelpers.clearPage();
+            expect(body.innerHTML).toEqual("");
+        })
+    })
 })

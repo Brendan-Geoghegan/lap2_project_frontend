@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1666803270811" clover="3.2.0">
-  <project timestamp="1666803270811" name="All files">
+<coverage generated="1666858253831" clover="3.2.0">
+  <project timestamp="1666858253832" name="All files">
     <metrics statements="222" coveredstatements="181" conditionals="18" coveredconditionals="3" methods="44" coveredmethods="32" elements="284" coveredelements="216" complexity="0" loc="222" ncloc="222" packages="1" files="1" classes="1"/>
     <file name="layout.js" path="C:\Users\user\Documents\brendan\futureproof\LAP2\lap2_project\frontend\static\js\layout.js">
       <metrics statements="222" coveredstatements="181" conditionals="18" coveredconditionals="3" methods="44" coveredmethods="32"/>
@@ -162,7 +162,7 @@
       <line num="225" count="0" type="stmt"/>
       <line num="227" count="1" type="stmt"/>
       <line num="228" count="1" type="stmt"/>
-      <line num="232" count="11" type="stmt"/>
+      <line num="232" count="13" type="stmt"/>
       <line num="236" count="3" type="stmt"/>
       <line num="237" count="3" type="stmt"/>
       <line num="238" count="3" type="stmt"/>

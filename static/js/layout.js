@@ -179,6 +179,7 @@ async function habitModal(index) {
         freqUpdateForm.appendChild(field);
     })
     habitDiv.appendChild(freqUpdateForm);
+
     const freqSelection = document.querySelector("#frequencyFormSelect");
     frequencyFields.forEach(f => {
         const field = document.createElement(f.tag);
@@ -186,6 +187,13 @@ async function habitModal(index) {
         field.textContent = f.attributes.value;
         freqSelection.appendChild(field);
     })
+    if (oneHabit.frequency == "Daily"){
+        freqSelection[0].setAttribute("selected", true)
+    } else if (oneHabit.frequency == "Weekly") {
+        freqSelection[1].setAttribute("selected", true)
+    } else if (oneHabit.frequency == "Monthly") {
+        freqSelection[2].setAttribute("selected", true)
+    }
     freqUpdateForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         await updateFrequency(localStorage.getItem("username"), index, e)
