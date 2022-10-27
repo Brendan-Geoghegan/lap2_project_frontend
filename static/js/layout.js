@@ -228,34 +228,64 @@ async function dashboard() {
 }
 
 async function habitModal(index) {
-    // console.log("index", index);
+    backbutton("dashboard");
+
     const oneHabit = await singleHabit(localStorage.getItem("username"), index);
     const habitDiv = document.createElement('div');
+    habitDiv.id = "habitMainDiv";
     body.appendChild(habitDiv);
-    const header = document.createElement('h1');
 
+    const habitCard = document.createElement('div');
+    habitCard.id = "habitCard";
+    habitDiv.appendChild(habitCard)
+
+    const headerDiv = document.createElement('div');
+    headerDiv.id = "headerDiv";
+    habitCard.appendChild(headerDiv)
+    const header = document.createElement('h1');
+    header.textContent = capitalise(oneHabit.habit);
+    headerDiv.appendChild(header);
+    
     function capitalise(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    header.textContent = capitalise(oneHabit.habit);
-    habitDiv.appendChild(header);
+    const streakContainer = document.createElement('div');
+    streakContainer.id = "streakContainer";
+    habitCard.appendChild(streakContainer);
+
+    const completionStreakDiv = document.createElement('div');
+    completionStreakDiv.id = "completionStreakDiv";
+    streakContainer.appendChild(completionStreakDiv);
+
+    const completeButtonDiv = document.createElement('div');
+    completeButtonDiv.id = "completeButtonDiv";
+
     const streak = document.createElement('h2');
-    streak.textContent = `Completion streak: ${oneHabit.streak}`;
+    streak.textContent = `Streak: ${oneHabit.streak}`;
     streak.id = "streak"
-    habitDiv.appendChild(streak);
-    const frequency = document.createElement('h2');
-    frequency.textContent = `Frequency: ${oneHabit.frequency}`;
-    frequency.id = "frequency"
-    habitDiv.appendChild(frequency);
-    const completionButton = document.createElement('button');
+    completionStreakDiv.appendChild(streak);
+
+
+const completionButton = document.createElement('button');
     completionButton.textContent = `Complete`;
     completionButton.addEventListener("click", (e) => {
         e.preventDefault()
         completedHabit(localStorage.getItem("username"), index)
     })
-    habitDiv.appendChild(completionButton);
-    completionButton.className = "greenButton"
+    completionButton.className = "greenButton";
+    completionButton.id = "habitCompleteButton";
+    streakContainer.appendChild(completeButtonDiv);
+    completeButtonDiv.appendChild(completionButton);
+
+    const frequencyDiv = document.createElement('div');
+    frequencyDiv.id = "frequencyDiv";
+    habitCard.appendChild(frequencyDiv);
+
+    const frequency = document.createElement('h2');
+    frequency.textContent = `Frequency: ${oneHabit.frequency}`;
+    frequency.id = "frequency";
+    frequencyDiv.appendChild(frequency);
 
     const freqUpdateForm = document.createElement("form");
     frequencyFormFields.forEach(f => {
@@ -263,7 +293,7 @@ async function habitModal(index) {
         Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
         freqUpdateForm.appendChild(field);
     })
-    habitDiv.appendChild(freqUpdateForm);
+    frequencyDiv.appendChild(freqUpdateForm);
     const freqSelection = document.querySelector("#frequencyFormSelect");
     frequencyFields.forEach(f => {
         const field = document.createElement(f.tag);
@@ -275,15 +305,20 @@ async function habitModal(index) {
         e.preventDefault();
         updateFrequency(localStorage.getItem("username"), index, e)
     });
+
     const deleteButton = document.createElement('button');
     deleteButton.textContent = `Delete`;
+    deleteButton.id = "deleteButton";
     deleteButton.addEventListener("click", (e) => {
         e.preventDefault()
         deleteHabit(localStorage.getItem("username"), index)
     })
-    habitDiv.appendChild(deleteButton);
     deleteButton.className = "redButton"
-    backbutton("dashboard");
+
+    const deleteButtonDiv = document.createElement('div');
+    deleteButtonDiv.id = "deleteButtonDiv";
+    deleteButtonDiv.appendChild(deleteButton)
+    habitCard.appendChild(deleteButtonDiv);
     logoutButton();
 }
 
@@ -328,6 +363,7 @@ function backbutton(hash) {
     backbutton.addEventListener("click", () => { window.location.hash = hash })
     body.appendChild(backbutton);
     backbutton.className = "redButton"
+    backbutton.id = "backbutton"
 }
 
 function logoutButton() {
