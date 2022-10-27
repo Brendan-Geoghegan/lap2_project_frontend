@@ -5,14 +5,13 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
-  background: radial-gradient(
-    circle,
-    rgb(233, 151, 42) 0%,
-    rgba(177, 21, 36, 1) 51%,
-    rgba(242, 46, 46, 1) 100%
-  );
+  background: radial-gradient(circle,
+      rgb(233, 151, 42) 0%,
+      rgba(177, 21, 36, 1) 51%,
+      rgba(242, 46, 46, 1) 100%);
   text-align: center;
 }
 
@@ -46,6 +45,7 @@ button {
     0 0 0.3em rgb(150, 137, 137);
   letter-spacing: 2px;
   animation: glow 1s ease-in-out infinite alternate;
+  cursor: pointer;
 }
 
 @keyframes glow {
@@ -104,12 +104,10 @@ button {
   top: -50px;
   left: -100px;
   background-color: #ff3cac;
-  background-image: linear-gradient(
-    225deg,
-    #f7f7f6 0%,
-    #ea983b 50%,
-    #b50707 100%
-  );
+  background-image: linear-gradient(225deg,
+      #f7f7f6 0%,
+      #ea983b 50%,
+      #b50707 100%);
   z-index: -1;
   transition: transform 0.5s ease;
 }
@@ -124,7 +122,8 @@ h1 {
   font-family: 'Electrolize';
 }
 
-#loginPageDiv, #registerPageDiv {
+#loginPageDiv,
+#registerPageDiv {
   height: 100%;
   padding: 0;
   margin: 0;
@@ -133,19 +132,21 @@ h1 {
   flex-direction: column;
 }
 
-#loginDiv, #registerDiv {
+#loginDiv,
+#registerDiv {
   display: flex;
   justify-content: center;
 }
 
-#loginForm, #registerFor {
+#loginForm,
+#registerFor {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.textInput{
+.textInput {
   font-family: 'Electrolize';
   border: grey 2px solid;
   border-radius: 25px;
@@ -155,7 +156,7 @@ h1 {
   width: 280px;
 }
 
-.textInput::placeholder{
+.textInput::placeholder {
   font-family: 'Electrolize';
 }
 
@@ -167,6 +168,7 @@ h1 {
 .greenButton {
   font-family: 'Electrolize';
   color: grey;
+  border: grey 2px solid;
   border-radius: 25px;
   padding: 7px 17px;
   background-color: white;
@@ -176,7 +178,7 @@ h1 {
 .greenButton:hover {
   border: green 2px solid;
   color: green;
-  background-color: lightgray;
+  background-color: rgb(150, 150, 150);
 }
 
 .redButton {
@@ -192,7 +194,7 @@ h1 {
 .redButton:hover {
   border: red 2px solid;
   color: red;
-  background-color: lightgray;
+  background-color: rgb(150, 150, 150);
 }
 
 /* Dashboard */
@@ -214,6 +216,7 @@ h1 {
   align-items: center;
   flex-direction: column;
 }
+
 #dashboardDivGrid {
   display: grid;
   grid-template-columns: repeat(3, 120px);
@@ -221,7 +224,7 @@ h1 {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
- }
+}
 
 #habitButton {
   border: 2px solid black;
@@ -233,10 +236,10 @@ h1 {
   font-style: italic;
   color: #e5c01b;
   background-image: linear-gradient(-180deg, #362c33 0%, #221620 100%);
-	box-shadow: 0 1rem 1.25rem 0 rgba(67, 67, 110, 0.5),
-							0 -0.25rem 1.5rem rgb(34, 30, 39) inset,
-							0 0.75rem 0.5rem rgba(243, 241, 241, 0.4) inset,
-							0 0.25rem 0.5rem 0 rgb(83, 74, 87) inset;
+  box-shadow: 0 1rem 1.25rem 0 rgba(67, 67, 110, 0.5),
+    0 -0.25rem 1.5rem rgb(34, 30, 39) inset,
+    0 0.75rem 0.5rem rgba(243, 241, 241, 0.4) inset,
+    0 0.25rem 0.5rem 0 rgb(83, 74, 87) inset;
 }
 
 #dashboardFooter {
@@ -248,7 +251,7 @@ h1 {
   transition: 1s;
 }
 
-#addImg:active{
+#addImg:active {
   transform: rotate(359deg);
 }
 
@@ -256,6 +259,7 @@ h1 {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(359deg);
   }
@@ -265,4 +269,12 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#streak {
+  font-family: "stick no bills";
+}
+
+#frequency {
+  font-family: "stick no bills";
 }

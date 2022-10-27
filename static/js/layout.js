@@ -6,32 +6,32 @@ body.id = "body";
 
 // ***********Form fields
 const loginFields = [
-    {tag: "input", attributes: {class: "textInput", type: "text", name: "username", placeholder: "Username", required: true}},
-    {tag: "input", attributes: {class: "textInput", type: "password", name: "password", placeholder: "Password", required: true}},
-    {tag: "input", attributes: {class: "greenButton", type: "submit", value: "Login"}}
+    { tag: "input", attributes: { class: "textInput", type: "text", name: "username", placeholder: "Username", required: true } },
+    { tag: "input", attributes: { class: "textInput", type: "password", name: "password", placeholder: "Password", required: true } },
+    { tag: "input", attributes: { class: "greenButton", type: "submit", value: "Login" } }
 ]
 
 const registerFields = [
-    {tag: "input", attributes: {class: "textInput", type: "text", name: "username", placeholder: "Username", required: true}},
-    {tag: "input", attributes: {class: "textInput", type: "password", name: "password", placeholder: "Password", required: true}},
-    {tag: "input", attributes: {class: "greenButton", type: "submit", value: "Register"}}
+    { tag: "input", attributes: { class: "textInput", type: "text", name: "username", placeholder: "Username", required: true } },
+    { tag: "input", attributes: { class: "textInput", type: "password", name: "password", placeholder: "Password", required: true } },
+    { tag: "input", attributes: { class: "greenButton", type: "submit", value: "Register" } }
 ]
 
 const frequencyFormFields = [
-    {tag: "select", attributes: {name: "frequency", id: "frequencyFormSelect"}},
-    {tag: "input", attributes: {type: "submit", value: "Update"}}
+    { tag: "select", attributes: { name: "frequency", id: "frequencyFormSelect" } },
+    { tag: "input", attributes: { type: "submit", value: "Update" } }
 ]
 
 const frequencyFields = [
-    {tag: "option", attributes: {value: "Daily"}},
-    {tag: "option", attributes: {value: "Weekly"}},
-    {tag: "option", attributes: {value: "Monthly"}}
+    { tag: "option", attributes: { value: "Daily" } },
+    { tag: "option", attributes: { value: "Weekly" } },
+    { tag: "option", attributes: { value: "Monthly" } }
 ]
 
 const createFields = [
-    {tag: "input", attributes: {class: "textInput createHabit", type: "text", name: "habit", placeholder: "Enter habit", required: true}},
-    {tag: "select", attributes: {name: "frequency", id: "frequencySelect"}},
-    {tag: "input", attributes: {class: "greenButton", type: "submit", value: "Create"}}
+    { tag: "input", attributes: { class: "textInput createHabit", type: "text", name: "habit", placeholder: "Enter habit", required: true } },
+    { tag: "select", attributes: { name: "frequency", id: "frequencySelect" } },
+    { tag: "input", attributes: { class: "greenButton", type: "submit", value: "Create" } }
 ]
 
 
@@ -40,7 +40,7 @@ updateContent()
 
 window.addEventListener('hashchange', updateContent);
 
-function updateContent(){
+function updateContent() {
     console.log("updateContent function");
     let hash = window.location.hash.substring(1);
     let hashBegin = hash.slice(0, 5);
@@ -96,7 +96,7 @@ function homePage() {
     loginButton.className = "btn";
     loginButton.textContent = "Login";
     loginBtnDiv.appendChild(loginButton);
-    loginButton.addEventListener("click", () => {window.location.hash = "login"})
+    loginButton.addEventListener("click", () => { window.location.hash = "login" })
 
     const registerBtnDiv = document.createElement('div')
     registerBtnDiv.className = "buttonContainer";
@@ -105,7 +105,7 @@ function homePage() {
     registerButton.className = "btn";
     registerButton.textContent = "Register";
     registerBtnDiv.appendChild(registerButton);
-    registerButton.addEventListener("click", () => {window.location.hash = "register"})
+    registerButton.addEventListener("click", () => { window.location.hash = "register" })
 }
 
 function loginPage() {
@@ -118,7 +118,7 @@ function loginPage() {
     header.textContent = "HabiTrackerz";
     loginPageDiv.appendChild(header);
 
-    header.addEventListener("click", () => {window.location.hash = ""})
+    header.addEventListener("click", () => { window.location.hash = "" })
 
     const loginDiv = document.createElement('div');
     loginDiv.id = "loginDiv";
@@ -142,7 +142,7 @@ function registerPage() {
     const registerPageDiv = document.createElement('div');
     registerPageDiv.id = "registerPageDiv"
     body.appendChild(registerPageDiv);
-    
+
     const headerDiv = document.createElement('div');
     headerDiv.class = "headerDiv"
     registerPageDiv.appendChild(headerDiv);
@@ -152,12 +152,12 @@ function registerPage() {
     header.textContent = "HabiTrackerz";
     registerPageDiv.appendChild(header);
 
-    header.addEventListener("click", () => {window.location.hash = ""})
+    header.addEventListener("click", () => { window.location.hash = "" })
 
     const registerDiv = document.createElement('div');
     registerDiv.id = "registerDiv";
     registerPageDiv.appendChild(registerDiv);
-    
+
     const registerForm = document.createElement("form");
     registerForm.id = "registerForm"
     const registerHeader = document.createElement('h1');
@@ -180,7 +180,7 @@ async function dashboard() {
     header.textContent = "HabiTrackerz";
     body.appendChild(header);
 
-    header.addEventListener("click", () => {window.location.hash = ""})
+    header.addEventListener("click", () => { window.location.hash = "" })
 
     const dashboardDiv = document.createElement('div');
     dashboardDiv.id = "dashboardDiv"
@@ -199,7 +199,7 @@ async function dashboard() {
         const habit = document.createElement("button");
         habit.id = "habitButton"
         habit.textContent = `${h.habit}`;
-        habit.addEventListener("click", () => {window.location.hash = `habit${index}`})
+        habit.addEventListener("click", () => { window.location.hash = `habit${index}` })
         dashboardDivGrid.appendChild(habit);
         habit.className = "greenButton"
     })
@@ -217,9 +217,9 @@ async function dashboard() {
     function rotateImg() {
         document.getElementById("addImg").style.transform = "rotate(360deg)";
     }
-     const dashboardFooter = document.createElement('div');
+    const dashboardFooter = document.createElement('div');
     dashboardFooter.id = "dashboardFooter";
-    body.appendChild(dashboardFooter);dashboardFooter.appendChild(createButton);
+    body.appendChild(dashboardFooter); dashboardFooter.appendChild(createButton);
     createButton.id = "habitButton";
     createButton.className = "createButton";
     logoutButton();
@@ -231,13 +231,20 @@ async function habitModal(index) {
     const habitDiv = document.createElement('div');
     body.appendChild(habitDiv);
     const header = document.createElement('h1');
-    header.textContent = oneHabit.habit;
+
+    function capitalise(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    header.textContent = capitalise(oneHabit.habit);
     habitDiv.appendChild(header);
     const streak = document.createElement('h2');
     streak.textContent = `Completion streak: ${oneHabit.streak}`;
+    streak.id = "streak"
     habitDiv.appendChild(streak);
     const frequency = document.createElement('h2');
     frequency.textContent = `Frequency: ${oneHabit.frequency}`;
+    frequency.id = "frequency"
     habitDiv.appendChild(frequency);
     const completionButton = document.createElement('button');
     completionButton.textContent = `Complete`;
@@ -316,7 +323,7 @@ function clearPage() {
 function backbutton(hash) {
     let backbutton = document.createElement("button")
     backbutton.textContent = `Back to ${hash}`;
-    backbutton.addEventListener("click", () => {window.location.hash = hash})
+    backbutton.addEventListener("click", () => { window.location.hash = hash })
     body.appendChild(backbutton);
     backbutton.className = "redButton"
 }
@@ -335,7 +342,7 @@ function logoutButton() {
 
 // ******** Requests
 
-async function requestLogin(e){
+async function requestLogin(e) {
     e.preventDefault();
     try {
         const options = {
@@ -345,14 +352,14 @@ async function requestLogin(e){
         }
         const r = await fetch(`${serverURL}/auth/login`, options)
         const data = await r.json()
-        if (data.err){ throw Error(data.err); }
+        if (data.err) { throw Error(data.err); }
         login(data);
     } catch (err) {
         console.warn(`Error: ${err}`);
     }
 }
 
-function login(data){
+function login(data) {
     // localStorage.setItem('username', data.user);
     const payload = jwt_decode(data.token);
     // console.log(payload, "payload");
@@ -363,7 +370,7 @@ function login(data){
     window.location.hash = "dashboard";
 }
 
-function logout(){
+function logout() {
     localStorage.clear();
     location.hash = 'login';
 }
@@ -384,7 +391,7 @@ async function requestRegistration(e) {
         }
         const r = await fetch(`${serverURL}/auth/register`, options)
         const data = await r.json()
-        if (data.err){ throw Error(data.err) }
+        if (data.err) { throw Error(data.err) }
         requestLogin(e);
     } catch (err) {
         console.warn(err);
@@ -401,7 +408,7 @@ async function userHabits(username) {
     console.log("get all habits", localStorage.getItem("token"));
     try {
         const options = {
-            headers: new Headers({"Authorization": localStorage.getItem('token')})
+            headers: new Headers({ "Authorization": localStorage.getItem('token') })
         }
         const response = await fetch(`${serverURL}/users/${username}`, options);
         const data = await response.json();
@@ -416,7 +423,7 @@ async function userHabits(username) {
 async function singleHabit(username, index) {
     try {
         const options = {
-            headers: new Headers({"Authorization": localStorage.getItem('token')})
+            headers: new Headers({ "Authorization": localStorage.getItem('token') })
         }
         const response = await fetch(`${serverURL}/users/${username}/habits/${index}`, options);
         const data = await response.json();
@@ -434,7 +441,7 @@ async function completedHabit(username, index) {
     try {
         const options = {
             method: 'PATCH',
-            headers: new Headers({"Authorization": localStorage.getItem('token')})
+            headers: new Headers({ "Authorization": localStorage.getItem('token') })
         }
         const response = await fetch(`${serverURL}/users/${username}/habits/${index}/completed`, options);
         updateContent();
@@ -449,7 +456,7 @@ async function createHabit(username, e) {
     try {
         const options = {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json',  "Authorization": localStorage.getItem('token')},
+            headers: { 'Content-Type': 'application/json', "Authorization": localStorage.getItem('token') },
             // headers: new Headers({"Authorization": localStorage.getItem('token')}),
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
@@ -465,7 +472,7 @@ async function updateFrequency(username, index, e) {
     try {
         const options = {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json',  "Authorization": localStorage.getItem('token')},
+            headers: { 'Content-Type': 'application/json', "Authorization": localStorage.getItem('token') },
             // headers: new Headers({"Authorization": localStorage.getItem('token')}),
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
@@ -482,7 +489,7 @@ async function deleteHabit(username, index, e) {
     try {
         const options = {
             method: 'DELETE',
-            headers: new Headers({"Authorization": localStorage.getItem('token')}),
+            headers: new Headers({ "Authorization": localStorage.getItem('token') }),
         }
         const response = await fetch(`${serverURL}/users/${username}/habits/${index}`, options);
         window.location.hash = "dashboard";
