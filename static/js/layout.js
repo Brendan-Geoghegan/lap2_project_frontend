@@ -186,6 +186,7 @@ async function dashboard() {
     dashboardDiv.id = "dashboardDiv"
     body.appendChild(dashboardDiv);
     const dashboardHeader = document.createElement('h1');
+    dashboardHeader.id = "dashboardh1";
     dashboardHeader.textContent = "Your dashboard";
     dashboardDiv.appendChild(dashboardHeader);
 
@@ -216,10 +217,11 @@ async function dashboard() {
     function rotateImg() {
         document.getElementById("addImg").style.transform = "rotate(360deg)";
     }
-    dashboardDiv.appendChild(createButton);
+     const dashboardFooter = document.createElement('div');
+    dashboardFooter.id = "dashboardFooter";
+    body.appendChild(dashboardFooter);dashboardFooter.appendChild(createButton);
     createButton.id = "habitButton";
     createButton.className = "createButton";
-
     logoutButton();
 }
 
@@ -324,7 +326,10 @@ function logoutButton() {
     logoutbutton.id = "dashboardLogout"
     logoutbutton.textContent = "Log out";
     logoutbutton.addEventListener("click", logout)
-    dashboardDiv.appendChild(logoutbutton);
+    const logoutFooter = document.createElement('div');
+    logoutFooter.id = "logoutFooter";
+    body.appendChild(logoutFooter);
+    logoutFooter.appendChild(logoutbutton);
     logoutbutton.className = "redButton"
 }
 
