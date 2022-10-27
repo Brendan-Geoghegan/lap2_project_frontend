@@ -19,7 +19,7 @@ const registerFields = [
 
 const frequencyFormFields = [
     { tag: "select", attributes: { name: "frequency", id: "frequencyFormSelect" } },
-    { tag: "input", attributes: { type: "submit", value: "Update" } }
+    { tag: "input", attributes: { class: "greenButton", type: "submit", value: "Update" } }
 ]
 
 const frequencyFields = [
