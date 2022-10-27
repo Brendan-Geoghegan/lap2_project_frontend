@@ -179,6 +179,7 @@ h1 {
   border: green 2px solid;
   color: green;
   background-color: rgb(150, 150, 150);
+  cursor: pointer;
 }
 
 .redButton {
@@ -271,10 +272,6 @@ h1 {
   justify-content: center;
 }
 
-#streak {
-  font-family: "stick no bills";
-}
-
-#frequency {
+#streak, #frequency {
   font-family: "stick no bills";
 }
