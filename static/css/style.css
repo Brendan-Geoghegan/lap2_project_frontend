@@ -180,6 +180,7 @@ button {
   border: green 2px solid;
   color: green;
   background-color: rgb(150, 150, 150);
+  cursor: pointer;
 }
 
 .redButton {
