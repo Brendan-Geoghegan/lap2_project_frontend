@@ -34,6 +34,6 @@
     "testEnvironment": "jsdom"
   },
   "dependencies": {
-    "animejs": "^3.2.1"
+    "coverage": "^0.4.1"
   }
 }
