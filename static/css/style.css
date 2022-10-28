@@ -8,7 +8,7 @@ body {
 
 body {
   margin: 0;
-  background: radial-gradient(circle, #fdbb2d 0%, #b21f1f 51%, #1a2a6c 100%);
+  background: radial-gradient(circle, #fdbb2d 0%, #b21f1f 51%, #600c04 100%);
 
   /* background: radial-gradient(circle,
       rgb(233, 151, 42) 0%,
@@ -45,15 +45,15 @@ button {
   text-shadow: 0 0 0.05em #d2e71c, 0 0 0.2em rgb(239, 255, 136),
     0 0 0.3em rgb(150, 137, 137);
   letter-spacing: 2px;
-  animation: glow 5s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
   cursor: pointer;
 }
 
 @keyframes glow {
-  from {
-    text-shadow: 0 0 10px rgb(174, 144, 22), 0 0 20px #fff, 0 0 30px #e60073,
-      0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-  }
+  /* from {
+    text-shadow: 0 0 10px rgb(174, 144, 22), 0 0 20px #28488e, 0 0 30px #28488e,
+      0 0 40px #28488e, 0 0 50px #28488e, 0 0 60px #28488e, 0 0 70px #28488e;
+  } */
 
   to {
     text-shadow: 0 0 10px #e5c01b, 0 0 20px #e5c01b, 0 0 30px #e5c01b,
@@ -250,13 +250,13 @@ button {
 
 #habitButton {
   /* border: 2px solid black; */
-  border-radius: 50px;
+  /* border-radius: 50px; */
   margin: 10px;
   width: 100px;
   height: 95px;
   text-transform: capitalize;
   font-style: italic;
-  color: #e5c01b;
+  color: #ebebeb;
   background-image: linear-gradient(-180deg, #362c33 0%, #221620 100%);
   box-shadow: 0 1rem 1.25rem 0 rgba(67, 67, 110, 0.5),
     0 -0.25rem 1.5rem rgb(34, 30, 39) inset,
@@ -270,6 +270,7 @@ button {
 
 .createButton {
   position: relative;
+  border-radius: 50px;
 }
 
 .createButton::after {
@@ -351,7 +352,7 @@ button {
   align-items: center;
   border: 2px black solid;
   border-radius: 30px;
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  box-shadow: rgb(1, 1, 2) 0px 20px 30px -10px;
   background: linear-gradient(-45deg, #ee7752, #af2d5f, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 7s ease infinite;

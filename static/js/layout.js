@@ -1,5 +1,5 @@
-const serverURL = "http://localhost:3000";
-// const serverURL = "https://daboiz-habit-tracker.herokuapp.com";
+// const serverURL = "http://localhost:3000";
+const serverURL = "https://daboiz-habit-tracker.herokuapp.com";
 
 const body = document.querySelector("body");
 body.id = "body";
