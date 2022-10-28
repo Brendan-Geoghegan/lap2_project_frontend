@@ -29,9 +29,9 @@ const frequencyFields = [
 ]
 
 const createFields = [
-    { tag: "input", attributes: { class: "textInput createHabit", type: "text", name: "habit", placeholder: "Enter habit", required: true } },
-    { tag: "select", attributes: { name: "frequency", id: "frequencySelect" } },
-    { tag: "input", attributes: { class: "greenButton", type: "submit", value: "Create" } }
+    { tag: "input", attributes: { class: "textInput createHabit", id: "createHabitInput", type: "text", name: "habit", placeholder: "Habit Name", required: true } },
+    { tag: "select", attributes: { name: "frequency", id: "frequencyHabitSelect" } },
+    { tag: "input", attributes: { class: "greenButton", id: "createHabitButton", type: "submit", value: "Create" } }
 ]
 
 
@@ -323,21 +323,32 @@ const completionButton = document.createElement('button');
 }
 
 function createPage() {
-    const createDiv = document.createElement('div');
-    body.appendChild(createDiv);
+    const createMainDiv = document.createElement('div');
+    createMainDiv.id = "createMainDiv";
+    body.appendChild(createMainDiv);
+
+    const createCard = document.createElement('div');
+    createCard.id = "createCard";
+    createMainDiv.appendChild(createCard);
+
+    const createHeaderDiv= document.createElement('div');
+    createHeaderDiv.id = "createHeaderDiv";
+    createCard.appendChild(createHeaderDiv);
 
     const createHabitHeader = document.createElement('h1');
-    createHabitHeader.textContent = "Create habit:";
-    createDiv.appendChild(createHabitHeader);
+    createHabitHeader.id = "createHabitHeader"
+    createHabitHeader.textContent = "Create habit";
+    createHeaderDiv.appendChild(createHabitHeader);
 
     const createForm = document.createElement("form");
+    createForm.id = "createForm";
     createFields.forEach(f => {
         const field = document.createElement(f.tag);
         Object.entries(f.attributes).forEach(([a, v]) => field.setAttribute(a, v))
         createForm.appendChild(field);
     })
-    createDiv.appendChild(createForm);
-    const selectFreq = document.querySelector("#frequencySelect")
+    createCard.appendChild(createForm);
+    const selectFreq = document.querySelector("#frequencyHabitSelect")
     console.log(selectFreq);
     frequencyFields.forEach(f => {
         const field = document.createElement(f.tag);
