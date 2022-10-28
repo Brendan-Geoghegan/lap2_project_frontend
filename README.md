@@ -18,6 +18,7 @@ Web application is hosted on Netlify and can be accessed via https://daboiz-habi
 - CSS
 - JavaScript
 - Express
+- Netlify
 - MongoDB Atlas
 - Jest
 - Supertest
