@@ -35,7 +35,15 @@ Web application is hosted on Netlify and can be accessed via https://daboiz-habi
 ## Wins & Challenges
 ### Wins
 - We were able to create the app as per the design brief, and mostly in line with our initial planning
+- Hash changes
+- Minimal modifications were required once the data model was set
 
 ### Challenges
+- Using the location hash
+- Implementing fetch requests into the backend
+- Testing the data model
 
 ## Future features
+- Improve password validation
+- Display graphs for habit data
+- Paywall to unlock certain features
