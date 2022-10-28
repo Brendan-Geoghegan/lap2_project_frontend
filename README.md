@@ -23,15 +23,6 @@ Web application is hosted on Netlify and can be accessed via https://daboiz-habi
 - Jest
 - Supertest
 
-## Process
-### Changelog
-
-### Screenshots/Images
-
-## Licence 
-
-## Bugs
-
 ## Wins & Challenges
 ### Wins
 - We were able to create the app as per the design brief, and mostly in line with our initial planning
